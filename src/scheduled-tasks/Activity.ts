@@ -34,6 +34,7 @@ export class UserTask extends ScheduledTask {
 		const now = new Date()
 
 		await this.container.redis.set( 'wa:last_check', now.getTime() )
+		const defaultAvatar = this.container.client.user?.avatarURL( { extension: 'png' } )
 
 		for ( const interwiki of wikis ) {
 			try {
@@ -71,7 +72,7 @@ export class UserTask extends ScheduledTask {
 							} )
 
 							await webhook.send( {
-								avatarURL: config.avatar ?? this.container.client.user?.avatar ?? '',
+								avatarURL: config.avatar ?? defaultAvatar ?? '',
 								embeds: [ embed ],
 								files: attachment,
 								username: config.name ?? this.container.client.user?.username ?? 'Wiki Activity'
