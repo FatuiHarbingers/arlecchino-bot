@@ -1,0 +1,69 @@
+import { container, SapphireClient } from '@sapphire/framework'
+import { env } from './environment'
+import type { Logger } from 'pino'
+import { ModelStore } from '../framework'
+import { pino } from './pino'
+import Redis from 'ioredis'
+import { ScheduledTaskRedisStrategy } from '@sapphire/plugin-scheduled-tasks/register-redis'
+import type { Sequelize } from 'sequelize'
+import { sequelize } from './sequelize'
+
+export class UserClient extends SapphireClient {
+	public constructor() {
+		const redisOptions = {
+			db: env.REDIS_DB,
+			host: env.REDIS_HOST,
+			password: env.REDIS_PASSWORD,
+			port: env.REDIS_PORT,
+			username: env.REDIS_USERNAME
+		}
+		super( {
+			api: {
+				acceptedContentMimeTypes: [ 'application/json' ],
+				listenOptions: {
+					port: env.API_PORT
+				},
+				origin: '*'
+			},
+			defaultPrefix: env.DISCORD_PREFIX ?? '!',
+			i18n: {
+				fetchLanguage: context => {
+					const { languages } = container.i18n
+					const lang = context.interactionGuildLocale ?? context.guild?.preferredLocale ?? 'en-US'
+					return languages.has( lang ) ? lang : 'en-US'
+				}
+			},
+			intents: [
+				'Guilds'
+			],
+			loadDefaultErrorListeners: true,
+			tasks: {
+				strategy: new ScheduledTaskRedisStrategy( {
+					bull: {
+						connection: redisOptions,
+						defaultJobOptions: {
+							removeOnComplete: true,
+							removeOnFail: true
+						}
+					}
+				} )
+			}
+		} )
+		container.pino = pino
+		container.redis = new Redis( redisOptions )
+		container.sequelize = sequelize
+		container.stores.register( new ModelStore() )
+	}
+
+	public async start(): Promise<void> {
+		await this.login( env.DISCORD_TOKEN )
+	}
+}
+
+declare module '@sapphire/pieces' {
+	interface Container {
+		pino: Logger
+		redis: Redis
+		sequelize: Sequelize
+	}
+}
