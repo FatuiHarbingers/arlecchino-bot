@@ -105,6 +105,12 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 			{ where: { guild, wiki } }
 		)
 	}
+
+	public async delete( options: Pick<IConfiguration, 'guild' | 'wiki'> ): Promise<void> {
+		await this.model.destroy( {
+			where: options
+		} )
+	}
 }
 
 declare global {
