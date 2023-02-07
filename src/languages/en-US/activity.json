@@ -7,7 +7,7 @@
 	"log-block-blocked": "🚫 **{{ author }}** blocked {{ target }}.",
 	"log-block-reblocked": "🚫 **{{ author }}** changed the block details for {{ target }}.",
 	"log-block-unblocked": "🚫 **{{ author }}** unblocked {{ target }}.",
-	"log-delete-deleted": "**{{ author }}** deleted **{{ target }}**.",
+	"log-delete-deleted": "🗑️ **{{ author }}** deleted **{{ target }}**.",
 	"log-delete-undeleted": "🗑️ **{{ author }}** restored **{{ target }}**.",
 	"log-move-redirect": "📦 **{{ author }}** moved {{ from }} to {{ to }}.",
 	"log-move-no-redirect": "📦 **{{ author }}** moved {{ from }} to {{ to }} without leaving a redirect.",
