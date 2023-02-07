@@ -5,7 +5,7 @@ import { SnowflakeRegex } from '@sapphire/discord-utilities'
 
 @ApplyOptions<RouteOptions>( {
 	enabled: true,
-	route: 'register'
+	route: 'delete'
 } )
 export class UserRoute extends Route {
 	public async [ methods.POST ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
