@@ -17,22 +17,23 @@ export class UserRoute extends Route {
 				color: s.number.greaterThanOrEqual( 0 ).lessThanOrEqual( 0xffffff ).optional,
 				guild: s.string.regex( SnowflakeRegex ),
 				name: s.string.lengthGreaterThan( 0 ).lengthLessThanOrEqual( EmbedLimits.MaximumAuthorNameLength ).optional,
+				update: s.boolean.default( false ),
 				wiki: s.string.regex( /^([a-z-]{2,5}\.)?\w+$/ )
 			} ).strict
-			const body = parser.parse( request.body )
+			const { update, ...body } = parser.parse( request.body )
+
 			Fandom.interwiki2api( body.wiki ) // just to throw an error if the interwiki is wrong
 			const configurations = this.container.stores.get( 'models' ).get( 'configurations' )
-			const success = await configurations.addWiki( body )
-			if ( success ) {
-				response.json( {
-					message: `"${ body.wiki }" is now being followed by guild ${ body.guild } in channel ${ body.channel }`
-				} )
+
+			if ( update ) {
+				await configurations.update( body )
 			} else {
-				response.status( 400 )
-				response.json( {
-					message: `Couldn't register "${ body.wiki }" for guild ${ body.guild }. Maybe it has reached its limit, or the wiki was already registered.`
-				} )
+				await configurations.addWiki( body )
 			}
+
+			response.json( {
+				message: `"${ body.wiki }" has been successfully updated for guild ${ body.guild }.`
+			} )
 		} catch ( e ) {
 			response.status( 400 )
 			if ( e instanceof BaseError ) {

@@ -59,11 +59,11 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 		)
 	}
 
-	public async addWiki( options: IConfiguration ): Promise<boolean> {
+	public async addWiki( options: IConfiguration ): Promise<void> {
 		const guilds = this.container.stores.get( 'models' ).get( 'guilds' )
 		const guildLimit = await guilds.getLimit( options.guild )
 		const currentCount = await this.countGuildConfigurations( options.guild )
-		if ( currentCount >= guildLimit ) return false
+		if ( currentCount >= guildLimit ) throw new Error( 'Guild is already on the maximum number of wikis it can follow.' )
 
 		const alreadyExists = await this.model.findOne( {
 			where: {
@@ -71,10 +71,9 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 				wiki: options.wiki
 			}
 		} )
-		if ( alreadyExists ) return false
+		if ( alreadyExists ) throw new Error( 'Wiki is already being followed.' )
 
 		await this.model.create( options )
-		return true
 	}
 
 	public async countGuildConfigurations( guild: string ): Promise<number> {
@@ -99,9 +98,9 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 		return new Set( wikis )
 	}
 
-	public update( options: Partial<IConfiguration> & Pick<IConfiguration, 'guild' | 'wiki'> ): Promise<[ number ]> {
+	public async update( options: Partial<IConfiguration> & Pick<IConfiguration, 'guild' | 'wiki'> ): Promise<void> {
 		const { guild, wiki } = options
-		return this.model.update(
+		await this.model.update(
 			options,
 			{ where: { guild, wiki } }
 		)
