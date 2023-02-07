@@ -32,7 +32,7 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 					type: DataTypes.STRING
 				},
 				channel: {
-					primaryKey: true,
+					allowNull: false,
 					type: DataTypes.STRING
 				},
 				color: {
@@ -40,9 +40,11 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 					type: DataTypes.INTEGER
 				},
 				guild: {
+					primaryKey: true,
 					type: DataTypes.STRING
 				},
 				name: {
+					allowNull: true,
 					type: DataTypes.STRING
 				},
 				wiki: {
@@ -63,7 +65,15 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 		const currentCount = await this.countGuildConfigurations( options.guild )
 		if ( currentCount >= guildLimit ) return false
 
-		await this.model.upsert( options )
+		const alreadyExists = await this.model.findOne( {
+			where: {
+				guild: options.guild,
+				wiki: options.wiki
+			}
+		} )
+		if ( alreadyExists ) return false
+
+		await this.model.create( options )
 		return true
 	}
 
