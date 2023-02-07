@@ -99,9 +99,10 @@ export class ConfigurationModel extends Model<IConfigurationInterface> {
 		return new Set( wikis )
 	}
 
-	public setProperty( guild: string, wiki: string, property: 'avatar' | 'color' | 'name', value: string | number ): Promise<[ number ]> {
+	public update( options: Partial<IConfiguration> & Pick<IConfiguration, 'guild' | 'wiki'> ): Promise<[ number ]> {
+		const { guild, wiki } = options
 		return this.model.update(
-			{ [ property ]: value },
+			options,
 			{ where: { guild, wiki } }
 		)
 	}
