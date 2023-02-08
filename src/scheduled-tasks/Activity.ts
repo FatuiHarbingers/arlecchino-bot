@@ -18,7 +18,6 @@ import { Time } from '@sapphire/duration'
 } )
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
-		this.container.logger.info( new Date().toISOString(), 'Running activity task' )
 		if ( !this.isReady() ) return
 
 		const configurations = this.container.stores.get( 'models' ).get( 'configurations' )
@@ -40,7 +39,6 @@ export class UserTask extends ScheduledTask {
 			try {
 				const wiki = await fandom.getWiki( interwiki ).load()
 				const activity = await getActivity( wiki, lastCheck, now )
-				this.container.logger.info( activity )
 
 				if ( activity.length === 0 ) continue
 
