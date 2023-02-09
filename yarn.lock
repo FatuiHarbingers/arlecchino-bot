@@ -48,14 +48,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bitomic/wikiactivity-api@npm:1.2.0":
+"@bitomic/wikiactivity-api@npm:^1.2.0":
   version: 1.2.0
   resolution: "@bitomic/wikiactivity-api@npm:1.2.0"
   dependencies:
     mw.js: ^2.4.1
     ts-dotenv: ^0.8.3
     undici: ^5.10.0
-  checksum: 533f34b46f5f865f843ae92c15869d7ee6bcd7522e7b5296ab72298c4ac80f02a5c94a4a33a65e3e6932c63dae92d5cc33c59cdbdce8fa02719b81cc75e5e79f
+  checksum: 21ef9413565ede8a7caadb462a0edde1460455c6f174f90ded687443e59d0736346e8ecdbd82638fe47f32eeba4a7e7905c7bac9cf406e8f5505fe3a321b1d56
   languageName: node
   linkType: hard
 
@@ -1239,9 +1239,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bullmq@npm:*":
-  version: 3.6.2
-  resolution: "bullmq@npm:3.6.2"
+"bullmq@npm:^3.6.4":
+  version: 3.6.4
+  resolution: "bullmq@npm:3.6.4"
   dependencies:
     cron-parser: ^4.6.0
     glob: ^8.0.3
@@ -1251,7 +1251,7 @@ __metadata:
     semver: ^7.3.7
     tslib: ^2.0.0
     uuid: ^9.0.0
-  checksum: 4f9ec95c9cdaad38fd66f5de9be8b09e3d71af568947b7af3b0ef5a0819642de23d9ada9f4b4d014f66e657b719535f20a4d3e672a2b63676ac69e9584af5c39
+  checksum: a158620341769f04fc994167dd6bb59cbd9c209b95a4c232dc047bf7115062274e058208ef359adcb2ca960ecb8c91be2f3bd919350f33b7adb4bccfecaaed3e
   languageName: node
   linkType: hard
 
@@ -4836,9 +4836,9 @@ __metadata:
   linkType: hard
 
 "ts-dotenv@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "ts-dotenv@npm:0.8.3"
-  checksum: 286fa123b66a6dc0a9b7249a74b83c06a2bc8be77b7c9cbbeeb73219090d3af267f2baa590a0e5f1fcfca99c3a170f3386ca02dd1b48b84a72d0087377e50443
+  version: 0.8.4
+  resolution: "ts-dotenv@npm:0.8.4"
+  checksum: 965edad5128e1fcd4aa69a6154fc2869c19fb7ba8d6ad09a9671916577bda52bdecd09d9d8208727fdecfbb71adad36468dac3f254ef39ab2059e578493c6929
   languageName: node
   linkType: hard
 
@@ -5018,9 +5018,11 @@ __metadata:
   linkType: hard
 
 "undici@npm:^5.10.0":
-  version: 5.10.0
-  resolution: "undici@npm:5.10.0"
-  checksum: 7ba2b71dccc74cd2bdf645b83e9aaef374ae04855943d0a2f42a3d0b9e5556f37cc9b5156fb5288277a2fa95fd46a56f3ae0d5cf73db3f008d75ec41104b136c
+  version: 5.18.0
+  resolution: "undici@npm:5.18.0"
+  dependencies:
+    busboy: ^1.6.0
+  checksum: 74e0f357c376c745fcca612481a5742866ae36086ad387e626255f4c4a15fc5357d9d0fa4355271b6a633d50f5556c3e85720844680c44861c66e23afca7245f
   languageName: node
   linkType: hard
 
@@ -5172,7 +5174,7 @@ __metadata:
   resolution: "wikiactivity@workspace:."
   dependencies:
     "@bitomic/eslint-config": ^1.0.0
-    "@bitomic/wikiactivity-api": 1.2.0
+    "@bitomic/wikiactivity-api": ^1.2.0
     "@commitlint/cli": ^17.4.2
     "@commitlint/config-conventional": ^17.4.2
     "@sapphire/decorators": ^6.0.0
@@ -5188,6 +5190,7 @@ __metadata:
     "@types/node": ^18.11.18
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
+    bullmq: ^3.6.4
     colorette: ^2.0.19
     discord-api-types: ^0.37.31
     discord.js: ^14.7.1

@@ -13,7 +13,7 @@
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@bitomic/wikiactivity-api": "1.2.0",
+    "@bitomic/wikiactivity-api": "^1.2.0",
     "@sapphire/decorators": "^6.0.0",
     "@sapphire/discord-utilities": "^3.0.0",
     "@sapphire/duration": "^1.0.0",
@@ -24,6 +24,7 @@
     "@sapphire/plugin-scheduled-tasks": "^6.0.0",
     "@sapphire/shapeshift": "^3.8.1",
     "@sapphire/utilities": "^3.11.0",
+    "bullmq": "^3.6.4",
     "colorette": "^2.0.19",
     "discord-api-types": "^0.37.31",
     "discord.js": "^14.7.1",
