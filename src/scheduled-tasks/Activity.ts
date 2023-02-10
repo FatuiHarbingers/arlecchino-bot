@@ -30,7 +30,8 @@ export class UserTask extends ScheduledTask {
 		const lastCheck = isNaN( storedLastCheck )
 			? new Date( Date.now() - Time.Minute * 5 )
 			: new Date( storedLastCheck )
-		const now = new Date()
+		// hopefully, the time difference between the server and the bot isn't more than 3 seconds
+		const now = new Date( Date.now() - Time.Second * 3 )
 
 		await this.container.redis.set( 'wa:last_check', now.getTime() )
 		const defaultAvatar = this.container.client.user?.avatarURL( { extension: 'png' } )
@@ -39,7 +40,6 @@ export class UserTask extends ScheduledTask {
 			try {
 				const wiki = await fandom.getWiki( interwiki ).load()
 				const activity = await getActivity( wiki, lastCheck, now )
-
 				if ( activity.length === 0 ) continue
 
 				const configs = await configurations.getWikiGuilds( interwiki )
@@ -364,7 +364,7 @@ export class UserTask extends ScheduledTask {
 		const page = hyperlink( item.title, pageUrl )
 
 		const sizediff = item.sizediff < 0 ? `- ${ Math.abs( item.sizediff ) }` : `+ ${ item.sizediff }`
-		const diffUrl = `${ this.parseInterwiki( wiki.interwiki ) }`
+		const diffUrl = `${ this.parseInterwiki( wiki.interwiki ) }?diff=${ item.revid }`
 		const diff = hyperlink( sizediff, diffUrl )
 
 		const i18nKey = item.type === 'edit' ? 'edited' : 'created'
