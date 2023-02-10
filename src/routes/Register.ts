@@ -35,6 +35,7 @@ export class UserRoute extends Route {
 				message: `"${ body.wiki }" has been successfully updated for guild ${ body.guild }.`
 			} )
 		} catch ( e ) {
+			this.container.logger.error( e )
 			response.status( 400 )
 			if ( e instanceof BaseError ) {
 				response.json( {
