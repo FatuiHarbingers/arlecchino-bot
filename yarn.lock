@@ -55,7 +55,7 @@ __metadata:
     mw.js: ^2.4.1
     ts-dotenv: ^0.8.3
     undici: ^5.10.0
-  checksum: a37b3845d8a824d4cd776be8bce7a05312daa7cca114785f3072b220ae76b1431f4f35754f2f9812948b864493ebc8a3d45964592fbe77fc7fd334bcfc690be9
+  checksum: 533f34b46f5f865f843ae92c15869d7ee6bcd7522e7b5296ab72298c4ac80f02a5c94a4a33a65e3e6932c63dae92d5cc33c59cdbdce8fa02719b81cc75e5e79f
   languageName: node
   linkType: hard
 
