@@ -12,7 +12,7 @@ export class UserRoute extends Route {
 		try {
 			const parser = s.object( {
 				guild: s.string.regex( SnowflakeRegex ),
-				wiki: s.string.regex( /^([a-z-]{2,5}\.)?\w+$/ )
+				wiki: s.string.regex( /^([a-z-]{2,5}\.)?[a-z0-9-]+$/ )
 			} ).strict
 			const body = parser.parse( request.body )
 

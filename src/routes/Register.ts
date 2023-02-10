@@ -18,7 +18,7 @@ export class UserRoute extends Route {
 				guild: s.string.regex( SnowflakeRegex ),
 				name: s.string.lengthGreaterThan( 0 ).lengthLessThanOrEqual( EmbedLimits.MaximumAuthorNameLength ).optional,
 				update: s.boolean.default( false ),
-				wiki: s.string.regex( /^([a-z-]{2,5}\.)?\w+$/ )
+				wiki: s.string.regex( /^([a-z-]{2,5}\.)?[a-z0-9-]+$/ )
 			} ).strict
 			const { update, ...body } = parser.parse( request.body )
 
