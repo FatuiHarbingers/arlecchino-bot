@@ -342,7 +342,7 @@ export class UserTask extends ScheduledTask {
 			const { headers, statusCode } = await request( url, { method: 'HEAD' } )
 			if ( statusCode > 400 ) return null
 
-			redirect = headers.location
+			redirect = Array.isArray( headers.location ) ? headers.location.at( 0 ) : headers.location
 		}
 
 		const { body, headers } = await request( url )
