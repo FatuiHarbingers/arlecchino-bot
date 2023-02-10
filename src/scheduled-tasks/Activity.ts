@@ -66,7 +66,7 @@ export class UserTask extends ScheduledTask {
 							embed.setColor( config.color ?? 0x0088ff )
 							embed.setFooter( {
 								iconURL: 'attachment://favicon.png',
-								text: wiki.sitename
+								text: `${ wiki.sitename }${ embed.data.footer?.text ?? '' }`
 							} )
 
 							await webhook.send( {
@@ -384,6 +384,9 @@ export class UserTask extends ScheduledTask {
 			} )
 		}
 
+		embed.setFooter( {
+			text: ` • ${ item.revid }`
+		} )
 		embed.setTimestamp( item.date )
 		return embed
 	}
