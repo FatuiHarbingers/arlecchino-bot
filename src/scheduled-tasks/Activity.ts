@@ -1,6 +1,5 @@
-import type { ActivityItem, DiscussionsItem, LogEventsItem, RecentChangesItem } from '@bitomic/wikiactivity-api'
 import { AttachmentBuilder, bold, EmbedBuilder, hyperlink, strikethrough, time, TimestampStyles, type Webhook } from 'discord.js'
-import { createActivityItem, getActivity } from '@bitomic/wikiactivity-api'
+import { type ActivityItem, createActivityItem, type DiscussionsItem, getActivity, type LogEventsItem, type RecentChangesItem } from '@bitomic/wikiactivity-api'
 import { Fandom, type FandomWiki, sleep } from 'mw.js'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
