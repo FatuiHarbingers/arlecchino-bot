@@ -21,7 +21,8 @@ RUN apk add -u --no-cache \
 	jpeg-dev \
 	pango-dev \
 	giflib-dev \
-	git
+	git \
+	openssh
 
 COPY --chown=node:node yarn.lock .
 COPY --chown=node:node package.json .
