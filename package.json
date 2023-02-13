@@ -13,7 +13,7 @@
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@arlecchino/api": "git@github.com:FatuiHarbingers/arlecchino-api.git#37659ed2f4718cc6b45302852b20e7e4c1f5a196",
+    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#37659ed2f4718cc6b45302852b20e7e4c1f5a196",
     "@bitomic/wikiactivity-api": "^1.2.0",
     "@sapphire/decorators": "^6.0.0",
     "@sapphire/discord-utilities": "^3.0.0",
