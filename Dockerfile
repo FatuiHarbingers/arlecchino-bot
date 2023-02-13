@@ -20,7 +20,8 @@ RUN apk add -u --no-cache \
 	cairo-dev \
 	jpeg-dev \
 	pango-dev \
-	giflib-dev
+	giflib-dev \
+	git
 
 COPY --chown=node:node yarn.lock .
 COPY --chown=node:node package.json .

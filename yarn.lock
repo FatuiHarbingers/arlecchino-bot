@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@arlecchino/api@https://github.com:FatuiHarbingers/arlecchino-api.git#5c8fccc447ebcb09ec6902b9debfa2784bba72ef":
+"@arlecchino/api@git@github.com:FatuiHarbingers/arlecchino-api.git#5c8fccc447ebcb09ec6902b9debfa2784bba72ef":
   version: 1.0.0
-  resolution: "@arlecchino/api@https://github.com:FatuiHarbingers/arlecchino-api.git#commit=5c8fccc447ebcb09ec6902b9debfa2784bba72ef"
+  resolution: "@arlecchino/api@git@github.com:FatuiHarbingers/arlecchino-api.git#commit=5c8fccc447ebcb09ec6902b9debfa2784bba72ef"
   dependencies:
     "@sapphire/discord-utilities": ^3.0.0
     "@sapphire/shapeshift": ^3.8.1
@@ -5514,7 +5514,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "wikiactivity@workspace:."
   dependencies:
-    "@arlecchino/api": "https://github.com:FatuiHarbingers/arlecchino-api.git#5c8fccc447ebcb09ec6902b9debfa2784bba72ef"
+    "@arlecchino/api": "git@github.com:FatuiHarbingers/arlecchino-api.git#5c8fccc447ebcb09ec6902b9debfa2784bba72ef"
     "@bitomic/eslint-config": ^1.0.0
     "@bitomic/wikiactivity-api": ^1.2.0
     "@commitlint/cli": ^17.4.2
