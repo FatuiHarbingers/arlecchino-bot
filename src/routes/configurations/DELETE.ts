@@ -16,6 +16,9 @@ export class UserRoute extends Route {
 
 			const configurations = this.container.stores.get( 'models' ).get( 'configurations' )
 			await configurations.delete( { ...body, guild } )
+
+			response.status( 204 )
+			response.json( null )
 		} catch ( e ) {
 			response.status( 400 )
 			if ( e instanceof BaseError ) {
