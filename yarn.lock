@@ -651,6 +651,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/engines@npm:4.10.1":
+  version: 4.10.1
+  resolution: "@prisma/engines@npm:4.10.1"
+  checksum: 359e32db3155640315661055d8e6430d60c10ff057b5d4c070164587d872ab6d4c292cee5ac35d364c1a2f6da0265fa847023c5cc1a4bf3c067fbecbbb638273
+  languageName: node
+  linkType: hard
+
 "@sapphire/async-queue@npm:^1.5.0":
   version: 1.5.0
   resolution: "@sapphire/async-queue@npm:1.5.0"
@@ -4182,6 +4189,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prisma@npm:^4.10.1":
+  version: 4.10.1
+  resolution: "prisma@npm:4.10.1"
+  dependencies:
+    "@prisma/engines": 4.10.1
+  bin:
+    prisma: build/index.js
+    prisma2: build/index.js
+  checksum: e4078909ad07bcfbe19e10aa0822dca47622b099b4ad6f48da743d47a658e25662de757b5b0e3bbfcd04c0b346dfcfe4d1fa6f0486312dfd8b193b32795ed5ce
+  languageName: node
+  linkType: hard
+
 "process-warning@npm:^2.0.0":
   version: 2.1.0
   resolution: "process-warning@npm:2.1.0"
@@ -5546,6 +5565,7 @@ __metadata:
     mysql2: ^2.3.3
     pino: ^8.8.0
     pino-pretty: ^9.1.1
+    prisma: ^4.10.1
     rimraf: ^4.1.2
     sequelize: ^6.28.0
     ts-dotenv: ^0.9.0
