@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install .github/husky",
-    "build": "rimraf tsconfig.tsbuildinfo dist && yarn tsc --listEmittedFiles --incremental",
+    "build": "rimraf tsconfig.tsbuildinfo dist && yarn db:generate && yarn tsc --listEmittedFiles --incremental",
     "build:watch": "yarn tsc -w --incremental",
+    "db:generate": "yarn pnpify prisma generate",
     "lint": "eslint src/ --ext .ts --cache",
     "lint:fix": "eslint src/ --fix --ext .ts --cache",
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
@@ -15,6 +16,7 @@
   "dependencies": {
     "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#b6c7311b5a70dcdf0382240db549b6300e1755a5",
     "@bitomic/wikiactivity-api": "^1.2.0",
+    "@prisma/client": "4.10.1",
     "@sapphire/decorators": "^6.0.0",
     "@sapphire/discord-utilities": "^3.0.0",
     "@sapphire/duration": "^1.0.0",
@@ -46,10 +48,11 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
+    "@yarnpkg/pnpify": "^4.0.0-rc.39",
     "eslint": "^8.33.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
-    "prisma": "^4.10.1",
+    "prisma": "4.10.1",
     "rimraf": "^4.1.2",
     "typescript": "^4.9.4"
   },

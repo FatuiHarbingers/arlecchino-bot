@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../src/generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Channels {
+  channel String? @db.VarChar(255)
+  guild   String  @db.VarChar(255)
+  type    String  @db.VarChar(255)
+
+  @@id([guild, type])
+}
+
+model Commands {
+  id        Int     @id @default(autoincrement())
+  entryType String? @db.VarChar(255)
+  name      String? @db.VarChar(255)
+  value     String? @db.VarChar(255)
+}
+
+model Configurations {
+  id      Int     @id @default(autoincrement())
+  avatar  String? @db.VarChar(255)
+  channel String? @db.VarChar(255)
+  color   Int?    @default(44225)
+  guild   String? @db.VarChar(255)
+  name    String? @db.VarChar(255)
+  wiki    String? @db.VarChar(255)
+}
+
+model FandomUsers {
+  snowflake String  @id @db.VarChar(255)
+  username  String? @db.VarChar(255)
+}
+
+model GuildSettings {
+  guild   String  @db.VarChar(255)
+  setting String  @db.VarChar(255)
+  value   String? @db.VarChar(255)
+
+  @@id([guild, setting])
+}
+
+model GuildWikis {
+  guild String  @id @db.VarChar(255)
+  wiki  String? @db.VarChar(255)
+}
+
+model Guilds {
+  limit     Int?   @default(1)
+  snowflake String @id @db.VarChar(255)
+}
+
+model IsaacVotes {
+  id   Int       @id @default(autoincrement())
+  date DateTime? @db.DateTime(0)
+  item String?   @db.VarChar(255)
+  user String?   @db.VarChar(255)
+}
+
+model ItemVotes {
+  id   Int       @id @default(autoincrement())
+  date DateTime? @db.DateTime(0)
+  item String?   @db.VarChar(255)
+  user String?   @db.VarChar(255)
+}
+
+model KeyV {
+  guild String  @db.VarChar(255)
+  key   String  @db.VarChar(255)
+  value String? @db.VarChar(255)
+
+  @@id([guild, key])
+}
+
+model Languages {
+  lang      String? @db.VarChar(255)
+  snowflake String  @id @db.VarChar(255)
+}
+
+model Roles {
+  guild String  @db.VarChar(255)
+  role  String? @db.VarChar(255)
+  type  String  @db.VarChar(255)
+
+  @@id([guild, type])
+}
+
+model StarboardMessages {
+  channel    String? @db.VarChar(255)
+  guild      String? @db.VarChar(255)
+  message    String  @id @db.VarChar(255)
+  pinChannel String? @db.VarChar(255)
+  pinMessage String? @db.VarChar(255)
+  thread     String? @db.VarChar(255)
+  user       String? @db.VarChar(255)
+}
+
+model StubGroups {
+  channel String? @db.VarChar(255)
+  guild   String? @db.VarChar(255)
+  id      Int     @id @default(autoincrement())
+  wiki    String? @db.VarChar(255)
+}
+
+model Stubs {
+  group        Int
+  pageid       Int
+  reviewedBy   String?   @db.VarChar(255)
+  reviewedDate DateTime? @db.DateTime(0)
+  title        String?   @db.VarChar(255)
+
+  @@id([group, pageid])
+}
+
+model TwitchFollows {
+  channel String? @db.VarChar(255)
+  guild   String  @db.VarChar(255)
+  user    String  @db.VarChar(255)
+
+  @@id([guild, user])
+}
