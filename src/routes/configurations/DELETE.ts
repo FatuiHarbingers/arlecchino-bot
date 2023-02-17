@@ -14,8 +14,14 @@ export class UserRoute extends Route {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 			const body = ConfigurationsDELETEValidator.parse( request.body )
 
-			const configurations = this.container.stores.get( 'models' ).get( 'configurations' )
-			await configurations.delete( { ...body, guild } )
+			await this.container.prisma.configurations.delete( {
+				where: {
+					guild_wiki: {
+						guild,
+						wiki: body.wiki
+					}
+				}
+			} )
 
 			response.status( 204 )
 			response.json( null )

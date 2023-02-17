@@ -1,12 +1,10 @@
 import { container, SapphireClient } from '@sapphire/framework'
 import { env } from './environment'
 import type { Logger } from 'pino'
-import { ModelStore } from '../framework'
 import { pino } from './pino'
+import { PrismaClient } from '@prisma/client'
 import Redis from 'ioredis'
 import { ScheduledTaskRedisStrategy } from '@sapphire/plugin-scheduled-tasks/register-redis'
-import type { Sequelize } from 'sequelize'
-import { sequelize } from './sequelize'
 
 export class UserClient extends SapphireClient {
 	public constructor() {
@@ -50,9 +48,8 @@ export class UserClient extends SapphireClient {
 			}
 		} )
 		container.pino = pino
+		container.prisma = new PrismaClient()
 		container.redis = new Redis( redisOptions )
-		container.sequelize = sequelize
-		container.stores.register( new ModelStore() )
 	}
 
 	public async start(): Promise<void> {
@@ -63,7 +60,7 @@ export class UserClient extends SapphireClient {
 declare module '@sapphire/pieces' {
 	interface Container {
 		pino: Logger
+		prisma: PrismaClient
 		redis: Redis
-		sequelize: Sequelize
 	}
 }

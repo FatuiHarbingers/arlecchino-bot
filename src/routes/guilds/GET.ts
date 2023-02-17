@@ -14,8 +14,8 @@ export class UserRoute extends Route {
 
 			const guild = await this.container.client.guilds.fetch( guildId )
 				.catch( () => null )
-			const limit = await this.container.stores.get( 'models' ).get( 'guilds' )
-				.getLimit( guildId ) || 0
+			const limit = await this.container.prisma.guilds.findUnique( { where: { snowflake: guildId } } )
+				.then( result => result?.limit ?? 0 )
 			response.json( {
 				exists: Boolean( guild ),
 				limit
