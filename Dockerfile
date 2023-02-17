@@ -29,7 +29,7 @@ COPY --chown=node:node package.json .
 COPY --chown=node:node .yarn/ .yarn/
 COPY --chown=node:node doppler.yaml .
 RUN sed -i 's/dev/prd/g' doppler.yaml
-COPY --chown=node:node prisma/ .
+COPY --chown=node:node prisma/ prisma/
 COPY --chown=node:node .yarnrc.yml .
 # Remove global cache config line
 RUN echo "$(tail -n +2 .yarnrc.yml)" > .yarnrc.yml
@@ -44,7 +44,7 @@ WORKDIR /home/node/app
 ENV NODE_ENV="development"
 
 COPY --chown=node:node tsconfig.json tsconfig.json
-COPY --chown=node:node prisma/ .
+COPY --chown=node:node prisma/ prisma/
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
@@ -61,6 +61,7 @@ WORKDIR /home/node/app
 ENV NODE_ENV="production"
 
 COPY --chown=node:node --from=builder /home/node/app/dist dist
+COPY --chown=node:node prisma/ prisma/
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
