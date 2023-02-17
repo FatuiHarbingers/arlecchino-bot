@@ -28,8 +28,6 @@ COPY --chown=node:node yarn.lock .
 COPY --chown=node:node package.json .
 COPY --chown=node:node .yarn/ .yarn/
 COPY --chown=node:node doppler.yaml .
-RUN sed -i 's/dev/prd/g' doppler.yaml
-COPY --chown=node:node prisma/ prisma/
 COPY --chown=node:node .yarnrc.yml .
 # Remove global cache config line
 RUN echo "$(tail -n +2 .yarnrc.yml)" > .yarnrc.yml
@@ -48,7 +46,9 @@ COPY --chown=node:node prisma/ prisma/
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
+
 RUN yarn install --immutable
+RUN yarn db:generate
 
 COPY --chown=node:node src/ src/
 RUN yarn run build
@@ -64,9 +64,10 @@ COPY --chown=node:node --from=builder /home/node/app/dist dist
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
+
 RUN yarn workspaces focus --all --production
+COPY --chown=node:node --from=builder /home/node/app/node_modules/.prisma node_modules/.prisma
 RUN chown node:node /home/node/app
-RUN yarn db:generate
 
 USER node
 
