@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Configurations {
+model Configuration {
   avatar  String? @db.VarChar(255)
   channel String  @db.VarChar(255)
   color   Int?    @default(44225)
@@ -16,9 +16,12 @@ model Configurations {
   wiki    String  @db.VarChar(255)
 
   @@id([guild, wiki])
+  @@map("Configurations")
 }
 
-model Guilds {
+model Guild {
   limit     Int?   @default(1)
   snowflake String @id @db.VarChar(255)
+
+  @@map("Guilds")
 }

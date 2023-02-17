@@ -12,7 +12,7 @@ export class UserRoute extends Route {
 		try {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 
-			const configurations = await this.container.prisma.configurations.findMany( {
+			const configurations = await this.container.prisma.configuration.findMany( {
 				where: { guild }
 			} )
 			response.json( configurations as ConfigurationsGETResponse )

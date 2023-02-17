@@ -13,7 +13,7 @@ export class UserEvent extends Listener {
 		await this.container.tasks.delete( 'activity' )
 		this.container.tasks.create( 'activity', null, 0 )
 
-		const wikiCount = await this.container.prisma.configurations.count()
+		const wikiCount = await this.container.prisma.configuration.count()
 		this.container.client.user?.setPresence( {
 			activities: [ {
 				name: `${ wikiCount } wikis | v${ process.env.npm_package_version ?? '1.0.0' }`,

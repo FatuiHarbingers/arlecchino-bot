@@ -16,10 +16,10 @@ export class UserRoute extends Route {
 			const { update, ...body } = ConfigurationPOSTValidator.parse( request.body )
 
 			Fandom.interwiki2api( body.wiki ) // just to throw an error if the interwiki is wrong
-			const { configurations } = this.container.prisma
+			const { configuration } = this.container.prisma
 
 			if ( update ) {
-				await configurations.update( {
+				await configuration.update( {
 					data: { ...body, guild },
 					where: {
 						guild_wiki: {
@@ -29,24 +29,24 @@ export class UserRoute extends Route {
 					}
 				} )
 			} else {
-				const limit = ( await this.container.prisma.guilds.findUnique( {
+				const limit = ( await this.container.prisma.guild.findUnique( {
 					where: { snowflake: guild }
 				} ) )?.limit ?? 1
-				const currentCount = await this.container.prisma.configurations.count( {
+				const currentCount = await this.container.prisma.configuration.count( {
 					where: { guild }
 				} )
 				if ( currentCount >= limit ) {
 					throw new Error( 'Guild is already on the maximum number of wikis it can follow.' )
 				}
 
-				const alreadyExists = await this.container.prisma.configurations.findFirst( {
+				const alreadyExists = await this.container.prisma.configuration.findFirst( {
 					where: { guild, wiki: body.wiki }
 				} )
 				if ( alreadyExists ) {
 					throw new Error( 'Wiki is already being followed.' )
 				}
 
-				await this.container.prisma.configurations.create( { data: { ...body, guild } } )
+				await this.container.prisma.configuration.create( { data: { ...body, guild } } )
 			}
 
 			response.json( body as ConfigurationPOSTResponse )

@@ -3,7 +3,7 @@ import { sleep } from 'mw.js'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
 import { Time } from '@sapphire/duration'
-import type { Configurations } from '@prisma/client'
+import type { Configuration } from '@prisma/client'
 import { ActivityFormatter } from '../framework'
 
 @ApplyOptions<ScheduledTaskOptions>( {
@@ -14,7 +14,7 @@ export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
 		if ( !this.isReady() ) return
 
-		const wikis = ( await this.container.prisma.configurations.groupBy( {
+		const wikis = ( await this.container.prisma.configuration.groupBy( {
 			by: [ 'wiki' ]
 		} ) ).map( i => i.wiki )
 		if ( wikis.length === 0 ) return
@@ -37,7 +37,7 @@ export class UserTask extends ScheduledTask {
 				const activity = await formatter.loadActivity()
 				if ( !activity ) continue
 
-				const configs = await this.container.prisma.configurations.findMany( {
+				const configs = await this.container.prisma.configuration.findMany( {
 					where: { wiki: interwiki }
 				} )
 				if ( configs.length === 0 ) continue
@@ -124,8 +124,8 @@ export class UserTask extends ScheduledTask {
 		return true
 	}
 
-	protected async sortGuildsPerLanguage( configs: Configurations[] ): Promise<Map<string, Configurations[]>> {
-		const perLanguage = new Map<string, Configurations[]>()
+	protected async sortGuildsPerLanguage( configs: Configuration[] ): Promise<Map<string, Configuration[]>> {
+		const perLanguage = new Map<string, Configuration[]>()
 
 		for ( const config of configs ) {
 			try {
