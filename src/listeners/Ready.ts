@@ -16,7 +16,7 @@ export class UserEvent extends Listener {
 		const wikiCount = await this.container.prisma.configurations.count()
 		this.container.client.user?.setPresence( {
 			activities: [ {
-				name: `${ wikiCount } wikis`,
+				name: `${ wikiCount } wikis | v${ process.env.npm_package_version ?? '1.0.0' }`,
 				type: ActivityType.Watching
 			} ]
 		} )
