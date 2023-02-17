@@ -70,4 +70,4 @@ RUN chown node:node /home/node/app
 
 USER node
 
-CMD [ "doppler", "run", "--", "yarn", "start" ]
+CMD [ "doppler", "run", "--", "yarn", "start:prod" ]
