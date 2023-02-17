@@ -5,11 +5,11 @@ import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-sched
 import { ApplyOptions  } from '@sapphire/decorators'
 import { EmbedLimits } from '@sapphire/discord-utilities'
 import ico2png from 'ico-to-png'
-import type { IConfiguration } from '../models/Configuration'
 import { isIPv4 } from 'net'
 import { request } from 'undici'
 import type { TFunction } from '@sapphire/plugin-i18next'
 import { Time } from '@sapphire/duration'
+import type { Configurations } from '@prisma/client'
 
 @ApplyOptions<ScheduledTaskOptions>( {
 	enabled: true,
@@ -19,9 +19,10 @@ export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
 		if ( !this.isReady() ) return
 
-		const configurations = this.container.stores.get( 'models' ).get( 'configurations' )
-		const wikis = await configurations.getWikis()
-		if ( wikis.size === 0 ) return
+		const wikis = ( await this.container.prisma.configurations.groupBy( {
+			by: [ 'wiki' ]
+		} ) ).map( i => i.wiki )
+		if ( wikis.length === 0 ) return
 
 		const fandom = new Fandom()
 		const storedLastCheck = parseInt( await this.container.redis.get( 'wa:last_check' ) ?? '', 10 )
@@ -42,7 +43,9 @@ export class UserTask extends ScheduledTask {
 				const activity = await getActivity( wiki, lastCheck, now )
 				if ( activity.length === 0 ) continue
 
-				const configs = await configurations.getWikiGuilds( interwiki )
+				const configs = await this.container.prisma.configurations.findMany( {
+					where: { wiki: interwiki }
+				} )
 				if ( configs.length === 0 ) continue
 
 				const perLanguage = await this.sortGuildsPerLanguage( configs )
@@ -443,8 +446,8 @@ export class UserTask extends ScheduledTask {
 			: `https://${ first }.fandom.com/wiki/`
 	}
 
-	protected async sortGuildsPerLanguage( configs: IConfiguration[] ): Promise<Map<string, IConfiguration[]>> {
-		const perLanguage = new Map<string, IConfiguration[]>()
+	protected async sortGuildsPerLanguage( configs: Configurations[] ): Promise<Map<string, Configurations[]>> {
+		const perLanguage = new Map<string, Configurations[]>()
 
 		for ( const config of configs ) {
 			try {

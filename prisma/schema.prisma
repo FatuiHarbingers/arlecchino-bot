@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Configurations {
+  avatar  String? @db.VarChar(255)
+  channel String  @db.VarChar(255)
+  color   Int?    @default(44225)
+  guild   String  @db.VarChar(255)
+  name    String? @db.VarChar(255)
+  wiki    String  @db.VarChar(255)
+
+  @@id([guild, wiki])
+}
+
+model Guilds {
+  limit     Int?   @default(1)
+  snowflake String @id @db.VarChar(255)
+}
