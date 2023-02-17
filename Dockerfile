@@ -44,6 +44,7 @@ WORKDIR /home/node/app
 ENV NODE_ENV="development"
 
 COPY --chown=node:node tsconfig.json tsconfig.json
+COPY --chown=node:node prisma/ .
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
