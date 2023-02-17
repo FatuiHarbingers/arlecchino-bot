@@ -7,21 +7,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ProfileType {
+  Default
+  Discussions
+  LogEvents
+  RecentChanges
+}
+
+model Profile {
+  id                 Int            @id @default(autoincrement())
+  avatar             String?        @db.VarChar(255)
+  color              Int?           @default(44225)
+  name               String?        @db.VarChar(255)
+  type               ProfileType?
+  Configuration      Configuration? @relation(fields: [configurationGuild, configurationWiki], references: [guild, wiki])
+  configurationGuild String?        @db.VarChar(255)
+  configurationWiki  String?        @db.VarChar(255)
+}
+
 model Configuration {
-  avatar  String? @db.VarChar(255)
-  channel String  @db.VarChar(255)
-  color   Int?    @default(44225)
-  guild   String  @db.VarChar(255)
-  name    String? @db.VarChar(255)
-  wiki    String  @db.VarChar(255)
+  channel        String    @db.VarChar(255)
+  guild          String    @db.VarChar(255)
+  profiles       Profile[]
+  wiki           String    @db.VarChar(255)
+  Guild          Guild?    @relation(fields: [guildSnowflake], references: [snowflake])
+  guildSnowflake String?   @db.VarChar(255)
 
   @@id([guild, wiki])
   @@map("Configurations")
 }
 
 model Guild {
-  limit     Int?   @default(1)
-  snowflake String @id @db.VarChar(255)
+  configurations Configuration[]
+  limit          Int?            @default(1)
+  snowflake      String          @id @db.VarChar(255)
 
   @@map("Guilds")
 }
