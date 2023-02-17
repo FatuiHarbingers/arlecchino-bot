@@ -61,6 +61,7 @@ WORKDIR /home/node/app
 ENV NODE_ENV="production"
 
 COPY --chown=node:node --from=builder /home/node/app/dist dist
+COPY --chown=node:node --from=builder /home/node/app/prisma prisma
 
 ARG GH_TOKEN
 RUN git config --global url."https://$GH_TOKEN@github.com/".insteadOf ssh://git@github.com/
