@@ -3,8 +3,13 @@ import { sleep } from 'mw.js'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
 import { Time } from '@sapphire/duration'
-import type { Configuration } from '@prisma/client'
+import type { Configuration, Profile } from '@prisma/client'
+import { ProfileType } from '@prisma/client'
 import { ActivityFormatter } from '../framework'
+
+type ConfigurationWithProfiles = ( Configuration & {
+    profiles: Profile[];
+} )
 
 @ApplyOptions<ScheduledTaskOptions>( {
 	enabled: true,
@@ -38,6 +43,7 @@ export class UserTask extends ScheduledTask {
 				if ( !activity ) continue
 
 				const configs = await this.container.prisma.configuration.findMany( {
+					include: { profiles: true },
 					where: { wiki: interwiki }
 				} )
 				if ( configs.length === 0 ) continue
@@ -58,21 +64,26 @@ export class UserTask extends ScheduledTask {
 						if ( !webhooks ) continue
 
 						let idx: 0 | 1 = 1
-						for ( const embed of embeds ) {
+						for ( const { embed, type: profileType } of embeds ) {
+							const profile = config.profiles.find( p => p.type === profileType )
+								?? config.profiles.find( p => p.type === ProfileType.Default )
+								?? config.profiles.at( 0 )
+							if ( !profile ) continue
+
 							idx = Math.abs( idx - 1 ) as 0 | 1
 							const webhook = webhooks[ idx ]
 
-							embed.setColor( config.color ?? 0x0088ff )
+							embed.setColor( profile.color ?? 0x0088ff )
 							embed.setFooter( {
 								iconURL: 'attachment://favicon.png',
 								text: `${ wiki.sitename }${ embed.data.footer?.text ?? '' }`
 							} )
 
 							await webhook.send( {
-								avatarURL: config.avatar ?? defaultAvatar ?? '',
+								avatarURL: profile.avatar ?? defaultAvatar ?? '',
 								embeds: [ embed ],
 								files: attachment,
-								username: config.name ?? this.container.client.user?.username ?? 'Wiki Activity'
+								username: profile.name ?? this.container.client.user?.username ?? 'Wiki Activity'
 							} )
 							await sleep( 1000 )
 						}
@@ -124,8 +135,8 @@ export class UserTask extends ScheduledTask {
 		return true
 	}
 
-	protected async sortGuildsPerLanguage( configs: Configuration[] ): Promise<Map<string, Configuration[]>> {
-		const perLanguage = new Map<string, Configuration[]>()
+	protected async sortGuildsPerLanguage( configs: ConfigurationWithProfiles[] ): Promise<Map<string, ConfigurationWithProfiles[]>> {
+		const perLanguage = new Map<string, ConfigurationWithProfiles[]>()
 
 		for ( const config of configs ) {
 			try {
