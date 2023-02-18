@@ -3,8 +3,7 @@ import { sleep } from 'mw.js'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
 import { Time } from '@sapphire/duration'
-import type { Configuration, Profile } from '@prisma/client'
-import { ProfileType } from '@prisma/client'
+import { type Configuration, type Profile, ProfileType } from '@prisma/client'
 import { ActivityFormatter } from '../framework'
 
 type ConfigurationWithProfiles = ( Configuration & {

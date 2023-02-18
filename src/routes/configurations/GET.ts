@@ -9,16 +9,18 @@ import { type ConfigurationsGETResponse, Routes, SnowflakeValidator } from '@arl
 } )
 export class UserRoute extends Route {
 	public async [ methods.GET ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
+		const json = response.json.bind( response ) as ( data: ConfigurationsGETResponse ) => void
+
 		try {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 
 			const configurations = await this.container.prisma.configuration.findMany( {
 				where: { guild }
 			} )
-			response.json( configurations as ConfigurationsGETResponse )
+			json( configurations )
 		} catch ( e ) {
 			response.status( 400 )
-			response.json( {
+			json( {
 				error: 'There was an error with your request, but we couldn\'t identify the issue.'
 			} )
 		}

@@ -11,6 +11,8 @@ import { type ConfigurationPOSTResponse, ConfigurationPOSTValidator, Routes, Sno
 } )
 export class UserRoute extends Route {
 	public async [ methods.POST ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
+		const json = response.json.bind( response ) as ( data: ConfigurationPOSTResponse ) => void
+
 		try {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 			const { update, ...body } = ConfigurationPOSTValidator.parse( request.body )
@@ -49,18 +51,18 @@ export class UserRoute extends Route {
 				await this.container.prisma.configuration.create( { data: { ...body, guild } } )
 			}
 
-			response.json( body as ConfigurationPOSTResponse )
+			json( body )
 		} catch ( e ) {
 			this.container.logger.error( e )
 			response.status( 400 )
 			if ( e instanceof BaseError ) {
-				response.json( {
+				json( {
 					error: 'Your request is missing required parameters in its body.'
 				} )
 				return
 			}
 
-			response.json( {
+			json( {
 				error: 'There was an error with your request, but we couldn\'t identify the issue.'
 			} )
 		}
