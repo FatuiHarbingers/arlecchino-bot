@@ -1,7 +1,6 @@
 import { type ApiRequest, type ApiResponse, methods, Route, type RouteOptions } from '@sapphire/plugin-api'
 import { BaseError } from '@sapphire/shapeshift'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Fandom } from 'mw.js'
 import { type ConfigurationPOSTResponse, ConfigurationPOSTValidator, Routes, SnowflakeValidator } from '@arlecchino/api'
 
 @ApplyOptions<RouteOptions>( {
@@ -17,7 +16,6 @@ export class UserRoute extends Route {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 			const { update, ...body } = ConfigurationPOSTValidator.parse( request.body )
 
-			Fandom.interwiki2api( body.wiki ) // just to throw an error if the interwiki is wrong
 			const { configuration } = this.container.prisma
 
 			if ( update ) {
@@ -34,21 +32,21 @@ export class UserRoute extends Route {
 				const limit = ( await this.container.prisma.guild.findUnique( {
 					where: { snowflake: guild }
 				} ) )?.limit ?? 1
-				const currentCount = await this.container.prisma.configuration.count( {
+				const currentCount = await configuration.count( {
 					where: { guild }
 				} )
 				if ( currentCount >= limit ) {
 					throw new Error( 'Guild is already on the maximum number of wikis it can follow.' )
 				}
 
-				const alreadyExists = await this.container.prisma.configuration.findFirst( {
+				const alreadyExists = await configuration.findFirst( {
 					where: { guild, wiki: body.wiki }
 				} )
 				if ( alreadyExists ) {
 					throw new Error( 'Wiki is already being followed.' )
 				}
 
-				await this.container.prisma.configuration.create( { data: { ...body, guild } } )
+				await configuration.create( { data: { ...body, guild } } )
 			}
 
 			json( body )

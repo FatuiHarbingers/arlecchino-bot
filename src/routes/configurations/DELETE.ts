@@ -16,7 +16,27 @@ export class UserRoute extends Route {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 			const body = ConfigurationsDELETEValidator.parse( request.body )
 
-			await this.container.prisma.configuration.delete( {
+			const { configuration, profile } = this.container.prisma
+
+			const config = await configuration.findUnique( {
+				where: {
+					guild_wiki: {
+						guild,
+						wiki: body.wiki
+					}
+				}
+			} )
+			if ( !config ) {
+				response.status( 204 )
+				json( null )
+			}
+
+			await profile.deleteMany( {
+				where: {
+					Configuration: config
+				}
+			} )
+			await configuration.delete( {
 				where: {
 					guild_wiki: {
 						guild,

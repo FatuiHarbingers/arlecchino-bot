@@ -15,14 +15,15 @@ enum ProfileType {
 }
 
 model Profile {
-  id                 Int            @id @default(autoincrement())
   avatar             String?        @db.VarChar(255)
   color              Int?           @default(44225)
   name               String?        @db.VarChar(255)
   type               ProfileType?
   Configuration      Configuration? @relation(fields: [configurationGuild, configurationWiki], references: [guild, wiki])
-  configurationGuild String?        @db.VarChar(255)
-  configurationWiki  String?        @db.VarChar(255)
+  configurationGuild String         @db.VarChar(255)
+  configurationWiki  String         @db.VarChar(255)
+
+  @@id([configurationGuild, configurationWiki])
 }
 
 model Configuration {
