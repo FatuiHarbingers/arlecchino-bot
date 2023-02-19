@@ -14,7 +14,7 @@
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#c33f5c57f8edd08ae7903c27f8a7f93906182f0b",
+    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#5a617cd16d49486e27bf1abe6ad2179d886ecbfc",
     "@bitomic/wikiactivity-api": "^1.2.0",
     "@prisma/client": "4.10.1",
     "@sapphire/decorators": "^6.0.0",

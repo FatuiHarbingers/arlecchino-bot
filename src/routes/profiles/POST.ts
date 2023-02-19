@@ -37,9 +37,10 @@ export class UserRoute extends Route {
 				create: data,
 				update: data,
 				where: {
-					configurationGuild_configurationWiki: {
+					configurationGuild_configurationWiki_type: {
 						configurationGuild: guild,
-						configurationWiki: body.wiki
+						configurationWiki: body.wiki,
+						type: data.type
 					}
 				}
 			} )
