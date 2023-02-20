@@ -67,22 +67,21 @@ export class UserTask extends ScheduledTask {
 							const profile = config.profiles.find( p => p.type === profileType )
 								?? config.profiles.find( p => p.type === ProfileType.Default )
 								?? config.profiles.at( 0 )
-							if ( !profile ) continue
 
 							idx = Math.abs( idx - 1 ) as 0 | 1
 							const webhook = webhooks[ idx ]
 
-							embed.setColor( profile.color ?? 0x0088ff )
+							embed.setColor( profile?.color ?? 0x0088ff )
 							embed.setFooter( {
 								iconURL: 'attachment://favicon.png',
 								text: `${ wiki.sitename }${ embed.data.footer?.text ?? '' }`
 							} )
 
 							await webhook.send( {
-								avatarURL: profile.avatar ?? defaultAvatar ?? '',
+								avatarURL: profile?.avatar ?? defaultAvatar ?? '',
 								embeds: [ embed ],
 								files: attachment,
-								username: profile.name ?? this.container.client.user?.username ?? 'Wiki Activity'
+								username: profile?.name ?? this.container.client.user?.username ?? 'Wiki Activity'
 							} )
 							await sleep( 1000 )
 						}
