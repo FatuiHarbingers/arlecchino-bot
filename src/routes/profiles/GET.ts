@@ -38,7 +38,7 @@ export class UserRoute extends Route {
 			}
 			for ( const { avatar, color, name, type, configurationWiki: wiki } of query ) {
 				const item: Exclude<ProfilesGETResponse, { error: string }>[ number ] = {
-					type: prismaProfileTypeToArlecchino[ type ?? PrismaProfileType.Default ],
+					type: prismaProfileTypeToArlecchino[ type ],
 					wiki
 				}
 				if ( avatar ) item.avatar = avatar

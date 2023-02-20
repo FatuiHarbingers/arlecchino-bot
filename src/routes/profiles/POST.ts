@@ -50,7 +50,6 @@ export class UserRoute extends Route {
 
 			json( body )
 		} catch ( e ) {
-			console.log( 3 )
 			this.container.logger.error( e )
 			response.status( 400 )
 			if ( e instanceof BaseError ) {

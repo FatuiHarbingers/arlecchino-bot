@@ -25,7 +25,7 @@ export class UserRoute extends Route {
 			} )
 		} catch ( e ) {
 			response.status( 400 )
-			console.error( e )
+			this.container.logger.error( e )
 			json( {
 				error: 'There was an error with your request, but we couldn\'t identify the issue.'
 			} )
