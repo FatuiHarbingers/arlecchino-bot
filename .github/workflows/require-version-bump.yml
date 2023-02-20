@@ -15,3 +15,5 @@ jobs:
 
       - name: Check for version bump
         uses: bachmacintosh/need-npm-package-version-bump@v1
+        with:
+          repo-token: ${{ secrets.GH_TOKEN }}
