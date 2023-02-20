@@ -12,7 +12,8 @@ type ConfigurationWithProfiles = ( Configuration & {
 
 @ApplyOptions<ScheduledTaskOptions>( {
 	enabled: true,
-	name: 'activity'
+	name: 'activity',
+	interval: Time.Second * 20
 } )
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
@@ -91,8 +92,6 @@ export class UserTask extends ScheduledTask {
 				this.container.logger.error( `There was an error for ${ interwiki }.`, e )
 			}
 		}
-
-		this.container.tasks.create( 'activity', null, Time.Second * 20 )
 	}
 
 	protected async getWebhooks( config: { channel: string, guild: string } ): Promise<[ Webhook, Webhook ] | null> {
