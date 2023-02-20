@@ -1,7 +1,6 @@
 import { type ApiRequest, type ApiResponse, methods, Route, type RouteOptions } from '@sapphire/plugin-api'
 import { BaseError } from '@sapphire/shapeshift'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Fandom } from 'mw.js'
 import { type ConfigurationPOSTResponse, ConfigurationPOSTValidator, Routes, SnowflakeValidator } from '@arlecchino/api'
 
 @ApplyOptions<RouteOptions>( {
@@ -11,15 +10,16 @@ import { type ConfigurationPOSTResponse, ConfigurationPOSTValidator, Routes, Sno
 } )
 export class UserRoute extends Route {
 	public async [ methods.POST ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
+		const json = response.json.bind( response ) as ( data: ConfigurationPOSTResponse ) => void
+
 		try {
 			const guild = SnowflakeValidator.parse( request.params.guildId )
 			const { update, ...body } = ConfigurationPOSTValidator.parse( request.body )
 
-			Fandom.interwiki2api( body.wiki ) // just to throw an error if the interwiki is wrong
-			const { configurations } = this.container.prisma
+			const { configuration } = this.container.prisma
 
 			if ( update ) {
-				await configurations.update( {
+				await configuration.update( {
 					data: { ...body, guild },
 					where: {
 						guild_wiki: {
@@ -29,38 +29,38 @@ export class UserRoute extends Route {
 					}
 				} )
 			} else {
-				const limit = ( await this.container.prisma.guilds.findUnique( {
+				const limit = ( await this.container.prisma.guild.findUnique( {
 					where: { snowflake: guild }
 				} ) )?.limit ?? 1
-				const currentCount = await this.container.prisma.configurations.count( {
+				const currentCount = await configuration.count( {
 					where: { guild }
 				} )
 				if ( currentCount >= limit ) {
 					throw new Error( 'Guild is already on the maximum number of wikis it can follow.' )
 				}
 
-				const alreadyExists = await this.container.prisma.configurations.findFirst( {
+				const alreadyExists = await configuration.findFirst( {
 					where: { guild, wiki: body.wiki }
 				} )
 				if ( alreadyExists ) {
 					throw new Error( 'Wiki is already being followed.' )
 				}
 
-				await this.container.prisma.configurations.create( { data: { ...body, guild } } )
+				await configuration.create( { data: { ...body, guild } } )
 			}
 
-			response.json( body as ConfigurationPOSTResponse )
+			json( body )
 		} catch ( e ) {
 			this.container.logger.error( e )
 			response.status( 400 )
 			if ( e instanceof BaseError ) {
-				response.json( {
+				json( {
 					error: 'Your request is missing required parameters in its body.'
 				} )
 				return
 			}
 
-			response.json( {
+			json( {
 				error: 'There was an error with your request, but we couldn\'t identify the issue.'
 			} )
 		}
