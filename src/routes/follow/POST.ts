@@ -3,7 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 import { SnowflakeValidator } from '@arlecchino/api'
 import { s } from '@sapphire/shapeshift'
 import { UserError } from '@sapphire/framework'
-import { ChannelType } from 'discord.js'
+import { ChannelType, EmbedBuilder } from 'discord.js'
 import { env } from '../../lib'
 
 @ApplyOptions<RouteOptions>( {
@@ -35,6 +35,24 @@ export class UserRoute extends Route {
 
 			const result = await announcements.addFollower( channelId )
 			response.json( result )
+
+			const logsChannel = await devGuild.channels.fetch( '1077309654448754698' )
+			if ( logsChannel?.type !== ChannelType.GuildText ) return
+
+			await logsChannel.send( {
+				embeds: [ new EmbedBuilder()
+					.setDescription( `<#${ announcements.id }> (#${ announcements.name }) has a new follower.` )
+					.setAuthor( {
+						iconURL: guild.iconURL( { extension: 'png' } ) ?? '',
+						name: guild.name
+					} )
+					.setFooter( {
+						text: `${ guild.id }`
+					} )
+					.setTimestamp( Date.now() )
+				]
+			} )
+				.catch( () => null )
 		} catch ( e ) {
 			response.status( 400 )
 			response.json( {
