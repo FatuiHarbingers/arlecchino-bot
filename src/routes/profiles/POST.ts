@@ -25,7 +25,7 @@ export class UserRoute extends Route {
 				[ ArlecchinoProfileType.RECENTCHANGES ]: PrismaProfileType.RecentChanges
 			}
 
-			const data = {
+			const create = {
 				avatar: body.avatar ?? null,
 				color: body.color ?? null,
 				configurationGuild: guild,
@@ -33,20 +33,24 @@ export class UserRoute extends Route {
 				name: body.name ?? null,
 				type: arlecchinoProfileTypeToPrisma[ body.type ]
 			}
-			await profile.upsert( {
-				create: data,
-				update: data,
-				where: {
-					configurationGuild_configurationWiki_type: {
-						configurationGuild: guild,
-						configurationWiki: body.wiki,
-						type: data.type
-					}
+			const update = {
+				avatar: create.avatar,
+				color: create.color,
+				name: create.name
+			}
+			const where = {
+				configurationGuild_configurationWiki_type: {
+					configurationGuild: guild,
+					configurationWiki: body.wiki,
+					type: create.type
 				}
-			} )
+			}
+
+			await profile.upsert( { create, update, where } )
 
 			json( body )
 		} catch ( e ) {
+			console.log( 3 )
 			this.container.logger.error( e )
 			response.status( 400 )
 			if ( e instanceof BaseError ) {
