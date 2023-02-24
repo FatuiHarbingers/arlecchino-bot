@@ -14,6 +14,8 @@ jobs:
       comment: ${{ github.event.comment.body }}
       pull_request: true
 
+  debug:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
