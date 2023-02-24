@@ -12,7 +12,7 @@ jobs:
   bump:
     name: Bump version triggered by PR comment
     if: github.event.issue.pull_request
-    uses: bitomic/utilities/.github/workflows/actions-bump.yml@2adc62dc9031b8bd7526a92fd03aa111ea68fd04
+    uses: bitomic/utilities/.github/workflows/actions-bump.yml@2179489db09307a88dc69b7e19652eeba12d2bb8
     with:
       author_association: ${{ github.event.comment.author_association }}
       comment: ${{ github.event.comment.body }}
