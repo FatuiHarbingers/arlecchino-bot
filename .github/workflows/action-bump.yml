@@ -18,4 +18,4 @@ jobs:
       comment: ${{ github.event.comment.body }}
       pull_request: true
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}
