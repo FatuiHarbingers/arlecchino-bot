@@ -6,5 +6,5 @@ on:
 
 jobs:
   bump:
-    uses: bitomic/utilities/.github/workflows/actions-bump.yml@9b265d48125fbba5dd25ea17eef5fbfa0e8862d7
+    uses: bitomic/utilities/.github/workflows/actions-bump.yml@0cf1471a1783aba4031e799ade9dc0ad616c137e
     if: github.event.issue.pull_request
