@@ -1,0 +1,10 @@
+name: Request to bump
+
+on:
+  issue_comment:
+    types: [ created ]
+
+jobs:
+  bump:
+    uses: bitomic/utilities/.github/workflows/docker-build.yml@d70f3180f20c7fbc5cac8b60dc8faa300d09ba13
+    if: github.event.issue.pull_request
