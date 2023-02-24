@@ -8,3 +8,7 @@ jobs:
   bump:
     uses: bitomic/utilities/.github/workflows/actions-bump.yml@0cf1471a1783aba4031e799ade9dc0ad616c137e
     if: github.event.issue.pull_request
+    with:
+      author_association: ${{ github.event.comment.author_association }}
+      comment: ${{ github.event.comment.body }}
+      pull_request: ${{ github.event.issue.pull_request }}
