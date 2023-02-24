@@ -6,5 +6,5 @@ on:
 
 jobs:
   bump:
-    uses: bitomic/utilities/.github/workflows/docker-build.yml@d70f3180f20c7fbc5cac8b60dc8faa300d09ba13
+    uses: bitomic/utilities/.github/workflows/actions-bump.yml@9b265d48125fbba5dd25ea17eef5fbfa0e8862d7
     if: github.event.issue.pull_request
