@@ -5263,12 +5263,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.10.0, undici@npm:^5.13.0, undici@npm:^5.14.0, undici@npm:^5.5.1":
+"undici@npm:^5.10.0, undici@npm:^5.13.0, undici@npm:^5.14.0":
   version: 5.18.0
   resolution: "undici@npm:5.18.0"
   dependencies:
     busboy: ^1.6.0
   checksum: 74e0f357c376c745fcca612481a5742866ae36086ad387e626255f4c4a15fc5357d9d0fa4355271b6a633d50f5556c3e85720844680c44861c66e23afca7245f
+  languageName: node
+  linkType: hard
+
+"undici@npm:^5.19.1":
+  version: 5.20.0
+  resolution: "undici@npm:5.20.0"
+  dependencies:
+    busboy: ^1.6.0
+  checksum: 25412a785b2bd0b12f0bb0ec47ef00aa7a611ca0e570cb7af97cffe6a42e0d78e4b15190363a43771e9002defc3c6647c1b2d52201b3f64e2196819db4d150d3
   languageName: node
   linkType: hard
 
@@ -5451,7 +5460,7 @@ __metadata:
     rimraf: ^4.1.2
     ts-dotenv: ^0.9.0
     typescript: ^4.9.4
-    undici: ^5.5.1
+    undici: ^5.19.1
   languageName: unknown
   linkType: soft
 
