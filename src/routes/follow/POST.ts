@@ -1,6 +1,6 @@
 import { type ApiRequest, type ApiResponse, methods, Route, type RouteOptions } from '@sapphire/plugin-api'
+import { Routes, SnowflakeValidator } from '@arlecchino/api'
 import { ApplyOptions } from '@sapphire/decorators'
-import { SnowflakeValidator } from '@arlecchino/api'
 import { s } from '@sapphire/shapeshift'
 import { UserError } from '@sapphire/framework'
 import { ChannelType, EmbedBuilder } from 'discord.js'
@@ -9,7 +9,7 @@ import { env } from '../../lib'
 @ApplyOptions<RouteOptions>( {
 	enabled: true,
 	name: 'follow/post',
-	route: 'follow/:guildId'
+	route: Routes.FOLLOW
 } )
 export class UserRoute extends Route {
 	public async [ methods.POST ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
