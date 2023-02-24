@@ -11,4 +11,4 @@ jobs:
     with:
       author_association: ${{ github.event.comment.author_association }}
       comment: ${{ github.event.comment.body }}
-      pull_request: ${{ github.event.issue.pull_request }}
+      pull_request: true
