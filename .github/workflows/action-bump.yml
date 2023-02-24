@@ -6,6 +6,9 @@ on:
 
 jobs:
   bump:
+    name: Bump version triggered by PR comment
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
