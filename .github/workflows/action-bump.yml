@@ -7,22 +7,9 @@ on:
 jobs:
   bump:
     name: Bump version triggered by PR comment
-    uses: bitomic/utilities/.github/workflows/actions-bump.yml@0cf1471a1783aba4031e799ade9dc0ad616c137e
     if: github.event.issue.pull_request
+    uses: bitomic/utilities/.github/workflows/actions-bump.yml@d4b32976beac80f64283f2069c83ca630cc52bc8
     with:
       author_association: ${{ github.event.comment.author_association }}
       comment: ${{ github.event.comment.body }}
       pull_request: true
-
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Debug
-        run: |
-          echo ${{ github.event.issue.pull_request }}
-          echo ${{ github.event.comment.author_association }}
-          echo ${{ github.event.comment.body }}
-
