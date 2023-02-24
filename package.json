@@ -38,7 +38,7 @@
     "pino": "^8.8.0",
     "pino-pretty": "^9.1.1",
     "ts-dotenv": "^0.9.0",
-    "undici": "^5.5.1"
+    "undici": "^5.19.1"
   },
   "devDependencies": {
     "@bitomic/eslint-config": "^1.0.0",
