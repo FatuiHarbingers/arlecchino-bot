@@ -1,7 +1,6 @@
 import { type ApiRequest, type ApiResponse, methods, Route, type RouteOptions } from '@sapphire/plugin-api'
-import { Routes, SnowflakeValidator } from '@arlecchino/api'
+import { FollowPOSTValidator, Routes, SnowflakeValidator } from '@arlecchino/api'
 import { ApplyOptions } from '@sapphire/decorators'
-import { s } from '@sapphire/shapeshift'
 import { UserError } from '@sapphire/framework'
 import { ChannelType, EmbedBuilder } from 'discord.js'
 import { env } from '../../lib'
@@ -15,9 +14,7 @@ export class UserRoute extends Route {
 	public async [ methods.POST ]( request: ApiRequest, response: ApiResponse ): Promise<void> {
 		try {
 			const guildId = SnowflakeValidator.parse( request.params.guildId )
-			const { channel: channelId } = s.object( {
-				channel: SnowflakeValidator
-			} ).parse( request.body )
+			const { channel: channelId } = FollowPOSTValidator.parse( request.body )
 			const guild = await this.container.client.guilds.fetch( guildId )
 			const channel = await guild.channels.fetch( channelId )
 			if ( !channel?.isTextBased() || channel.type === ChannelType.GuildAnnouncement ) {

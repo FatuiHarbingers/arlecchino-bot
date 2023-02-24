@@ -5,15 +5,15 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@arlecchino/api@ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#1567e888e6d7bc82dafb9389d666de2cbda9e857":
+"@arlecchino/api@ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#12c15231f6615cecf98558fcd5c2c9aaacb9242c":
   version: 1.0.0
-  resolution: "@arlecchino/api@ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#commit=1567e888e6d7bc82dafb9389d666de2cbda9e857"
+  resolution: "@arlecchino/api@ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#commit=12c15231f6615cecf98558fcd5c2c9aaacb9242c"
   dependencies:
     "@sapphire/discord-utilities": ^3.0.0
     "@sapphire/shapeshift": ^3.8.1
     tsup: ^6.6.2
     typescript: ^4.9.5
-  checksum: 396861f2b9da9aca84d491fb9a5437306ae0dfefdb6ec892b29ec6a2f282bcac742d5d74d6f1cef0b4d99f7746f66920d09d979e071187055448a71ee1e08a3e
+  checksum: 0881aed8641f505a983e9109e5d3da477267225f390a4a88ebb31295cc66a78a9cf7775f7ca6d2f46d8ce92ed493bb22701d3464da64b1efdd4c89583b86c5d1
   languageName: node
   linkType: hard
 
@@ -5424,7 +5424,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "wikiactivity@workspace:."
   dependencies:
-    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#1567e888e6d7bc82dafb9389d666de2cbda9e857"
+    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#12c15231f6615cecf98558fcd5c2c9aaacb9242c"
     "@bitomic/eslint-config": ^1.0.0
     "@bitomic/wikiactivity-api": ^1.2.0
     "@commitlint/cli": ^17.4.2
