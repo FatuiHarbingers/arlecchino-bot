@@ -10,7 +10,7 @@
     "build:watch": "yarn tsc -w --incremental",
     "db": "yarn prisma generate && yarn prisma migrate deploy",
     "db:generate": "yarn prisma generate",
-    "db:migrate": "yarn prisma migrate deploy",
+    "db:migrate": "yarn prisma migrate deploy || true",
     "lint": "eslint src/ --ext .ts --cache",
     "lint:fix": "eslint src/ --fix --ext .ts --cache",
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
