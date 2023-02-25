@@ -6,9 +6,11 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install .github/husky",
-    "build": "rimraf tsconfig.tsbuildinfo dist && yarn db:generate && yarn tsc --listEmittedFiles --incremental",
+    "build": "rimraf tsconfig.tsbuildinfo dist && yarn db && yarn tsc --listEmittedFiles --incremental",
     "build:watch": "yarn tsc -w --incremental",
+    "db": "yarn prisma generate && yarn prisma migrate deploy",
     "db:generate": "yarn prisma generate",
+    "db:migrate": "yarn prisma migrate deploy",
     "lint": "eslint src/ --ext .ts --cache",
     "lint:fix": "eslint src/ --fix --ext .ts --cache",
     "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
