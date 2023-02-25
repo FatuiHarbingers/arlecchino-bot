@@ -6,14 +6,13 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install .github/husky",
-    "build": "rimraf tsconfig.tsbuildinfo dist && yarn db && yarn tsc --listEmittedFiles --incremental",
+    "build": "rimraf tsconfig.tsbuildinfo dist && yarn db:generate && yarn tsc --listEmittedFiles --incremental",
     "build:watch": "yarn tsc -w --incremental",
-    "db": "yarn prisma generate && yarn prisma migrate deploy",
     "db:generate": "yarn prisma generate",
     "db:migrate": "yarn prisma migrate deploy || true",
     "lint": "eslint src/ --ext .ts --cache",
     "lint:fix": "eslint src/ --fix --ext .ts --cache",
-    "start": "doppler run -- yarn node --enable-source-maps dist/main.js"
+    "start": "yarn db:migrate && doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
     "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#12c15231f6615cecf98558fcd5c2c9aaacb9242c",
