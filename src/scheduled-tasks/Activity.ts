@@ -23,7 +23,10 @@ export class UserTask extends ScheduledTask {
 		const wikis = ( await this.container.prisma.configuration.groupBy( {
 			by: [ 'wiki' ]
 		} ) ).map( i => i.wiki )
-		if ( wikis.length === 0 ) return
+		if ( wikis.length === 0 ) {
+			await this.container.redis.set( 'wa:last_check', Date.now() )
+			return
+		}
 
 		const storedLastCheck = parseInt( await this.container.redis.get( 'wa:last_check' ) ?? '', 10 )
 
