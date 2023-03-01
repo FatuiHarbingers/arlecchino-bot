@@ -17,6 +17,7 @@ type ConfigurationWithProfiles = ( Configuration & {
 } )
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
+		this.container.logger.info( 'Running task.' )
 		if ( !this.isReady() ) return
 		const t1 = Date.now()
 
