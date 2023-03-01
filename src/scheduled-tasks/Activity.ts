@@ -24,6 +24,7 @@ export class UserTask extends ScheduledTask {
 			by: [ 'wiki' ]
 		} ) ).map( i => i.wiki )
 		if ( wikis.length === 0 ) {
+			this.container.logger.warn( 'No wikis to check.' )
 			await this.container.redis.set( 'wa:last_check', Date.now() )
 			return
 		}
@@ -35,6 +36,7 @@ export class UserTask extends ScheduledTask {
 			: new Date( storedLastCheck )
 		// hopefully, the time difference between the server and the bot isn't more than 3 seconds
 		const now = new Date( Date.now() - Time.Second * 3 )
+		this.container.logger.info( lastCheck, now )
 
 		const defaultAvatar = this.container.client.user?.avatarURL( { extension: 'png' } )
 
