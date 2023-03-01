@@ -9,14 +9,6 @@ export const env = load( {
 		type: String
 	},
 	DISCORD_TOKEN: String,
-	MYSQL_DATABASE: String,
-	MYSQL_HOST: String,
-	MYSQL_PASSWORD: String,
-	MYSQL_PORT: {
-		default: 5432,
-		type: Number
-	},
-	MYSQL_USERNAME: String,
 	NODE_ENV: [
 		'development' as const,
 		'production' as const
