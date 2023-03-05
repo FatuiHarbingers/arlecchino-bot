@@ -679,6 +679,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@quority/core@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@quority/core@npm:4.0.1"
+  dependencies:
+    "@sapphire/shapeshift": ^3.8.1
+    fs-extra: ^10.1.0
+    tough-cookie: ^4.1.2
+    undici: ^5.12.0
+  checksum: 16f1b3a0ff8c2d8a15eaa3b2c909b4c1a5c3bba47d412497a056dcb0dbf9e3c42805e30bb475700791f9220b0e7c418dc3dba14bed3e076ae85f7b81d3004b13
+  languageName: node
+  linkType: hard
+
+"@quority/fandom@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@quority/fandom@npm:4.0.2"
+  dependencies:
+    "@quority/core": ^4.0.1
+    "@sapphire/shapeshift": ^3.8.1
+  checksum: 7ede3885b0914a5edbba738030fc152ba31d16298965902dba7780fbb986b11432c75f047e0bc8fc6c3165e4e4d864a5be280b5e73eca2d6631b26d2df0a7299
+  languageName: node
+  linkType: hard
+
 "@sapphire/async-queue@npm:^1.5.0":
   version: 1.5.0
   resolution: "@sapphire/async-queue@npm:1.5.0"
@@ -2440,7 +2462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^10.0.0":
+"fs-extra@npm:^10.0.0, fs-extra@npm:^10.1.0":
   version: 10.1.0
   resolution: "fs-extra@npm:10.1.0"
   dependencies:
@@ -5028,7 +5050,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tough-cookie@npm:^4.0.0":
+"tough-cookie@npm:^4.0.0, tough-cookie@npm:^4.1.2":
   version: 4.1.2
   resolution: "tough-cookie@npm:4.1.2"
   dependencies:
@@ -5272,7 +5294,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.19.1":
+"undici@npm:^5.12.0, undici@npm:^5.19.1":
   version: 5.20.0
   resolution: "undici@npm:5.20.0"
   dependencies:
@@ -5430,6 +5452,8 @@ __metadata:
     "@commitlint/cli": ^17.4.2
     "@commitlint/config-conventional": ^17.4.2
     "@prisma/client": 4.10.1
+    "@quority/core": ^4.0.1
+    "@quority/fandom": ^4.0.2
     "@sapphire/decorators": ^6.0.0
     "@sapphire/discord-utilities": ^3.0.0
     "@sapphire/duration": ^1.0.0
@@ -5452,7 +5476,6 @@ __metadata:
     ico-to-png: ^0.2.1
     ioredis: ^5.3.0
     lint-staged: ^13.1.0
-    mw.js: ^2.4.1
     mysql2: ^2.3.3
     pino: ^8.8.0
     pino-pretty: ^9.1.1
