@@ -1,4 +1,4 @@
-import { AttachmentBuilder, type Webhook } from 'discord.js'
+import { AttachmentBuilder, ChannelType, type Webhook } from 'discord.js'
 import { sleep } from 'mw.js'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
@@ -107,7 +107,7 @@ export class UserTask extends ScheduledTask {
 		try {
 			const guild = await this.container.client.guilds.fetch( config.guild )
 			const channel = await guild.channels.fetch( config.channel )
-			if ( !channel?.isTextBased() || channel.isThread() ) return null
+			if ( !channel?.isTextBased() || channel.isThread() || channel.type === ChannelType.GuildStageVoice ) return null
 
 			const channelWebhooks = await channel.fetchWebhooks()
 			const ownedWebhooks = channelWebhooks.filter( w => w.owner?.id === this.container.client.user?.id )
