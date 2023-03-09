@@ -675,13 +675,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quority/activity@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@quority/activity@npm:1.0.2"
+"@quority/activity@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@quority/activity@npm:1.0.3"
   dependencies:
     "@quority/core": ^4.0.3
     "@quority/fandom": ^4.0.7
-  checksum: ae6da9d96b90533b0469ed3217d4f703d5bcb436307aa4202a3223f19c2be3b946cde2085dd0b646a81aac9ec51af62444f2bddfc28711f94bdb3a9e4db5b7ca
+  checksum: 1c52b69c2747ad540dca94583aa3431280c01aacaa2716b0c356abc90cc7ff67bd2132cdf02e5e701f71d77f0d627b9f7dd57980093f00fb0544f3fd5999f41c
   languageName: node
   linkType: hard
 
@@ -5376,7 +5376,7 @@ __metadata:
     "@commitlint/cli": ^17.4.2
     "@commitlint/config-conventional": ^17.4.2
     "@prisma/client": 4.10.1
-    "@quority/activity": ^1.0.2
+    "@quority/activity": ^1.0.3
     "@quority/core": ^4.0.3
     "@quority/fandom": ^4.0.7
     "@sapphire/decorators": ^6.0.0
