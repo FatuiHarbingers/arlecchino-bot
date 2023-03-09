@@ -7,7 +7,7 @@ import { Events } from 'discord.js'
 	once: true
 } )
 export class UserEvent extends Listener {
-	public async run(): Promise<void> {
+	public run(): void {
 		this.container.pino.info( 'Client is ready and running.' )
 
 		this.container.tasks.create( 'presence', null, 0 )

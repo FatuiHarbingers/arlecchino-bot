@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#4bb9e55592b4d49e8c15cce0daaefd87bcedc197",
-    "@bitomic/wikiactivity-api": "^1.2.0",
     "@prisma/client": "4.10.1",
-    "@quority/core": "^4.0.1",
-    "@quority/fandom": "^4.0.2",
+    "@quority/activity": "^1.0.1",
+    "@quority/core": "^4.0.3",
+    "@quority/fandom": "^4.0.7",
     "@sapphire/decorators": "^6.0.0",
     "@sapphire/discord-utilities": "^3.0.0",
     "@sapphire/duration": "^1.0.0",

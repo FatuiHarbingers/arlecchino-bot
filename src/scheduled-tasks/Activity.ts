@@ -1,5 +1,5 @@
 import { AttachmentBuilder, ChannelType, type Webhook } from 'discord.js'
-import { sleep } from 'mw.js'
+import { sleep } from '@quority/core'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
 import { Time } from '@sapphire/duration'
@@ -12,8 +12,8 @@ type ConfigurationWithProfiles = ( Configuration & {
 
 @ApplyOptions<ScheduledTaskOptions>( {
 	enabled: true,
-	name: 'activity',
-	interval: Time.Second * 20
+	interval: Time.Second * 20,
+	name: 'activity'
 } )
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
@@ -41,15 +41,15 @@ export class UserTask extends ScheduledTask {
 
 		const defaultAvatar = this.container.client.user?.avatarURL( { extension: 'png' } )
 
-		for ( const interwiki of wikis ) {
+		for ( const api of wikis ) {
 			try {
-				const formatter = new ActivityFormatter( interwiki, lastCheck, now )
+				const formatter = new ActivityFormatter( api, lastCheck, now )
 				const activity = await formatter.loadActivity()
 				if ( !activity ) continue
 
 				const configs = await this.container.prisma.configuration.findMany( {
 					include: { profiles: true },
-					where: { wiki: interwiki }
+					where: { wiki: api }
 				} )
 				if ( configs.length === 0 ) continue
 
@@ -58,7 +58,6 @@ export class UserTask extends ScheduledTask {
 				const attachment = favicon
 					? [ new AttachmentBuilder( favicon, { name: 'favicon.png' } ) ]
 					: []
-				const wiki = await formatter.getWiki()
 
 				for ( const [ lang, guilds ] of perLanguage ) {
 					const embeds = await formatter.getActivityEmbeds( lang )
@@ -80,7 +79,7 @@ export class UserTask extends ScheduledTask {
 							embed.setColor( profile?.color ?? 0x0088ff )
 							embed.setFooter( {
 								iconURL: 'attachment://favicon.png',
-								text: `${ wiki.sitename }${ embed.data.footer?.text ?? '' }`
+								text: `${ await formatter.getSitename() }${ embed.data.footer?.text ?? '' }`
 							} )
 
 							await webhook.send( {
@@ -94,7 +93,7 @@ export class UserTask extends ScheduledTask {
 					}
 				}
 			} catch ( e ) {
-				this.container.logger.error( `There was an error for ${ interwiki }.`, e )
+				this.container.logger.error( `There was an error for ${ api }.`, e )
 			}
 		}
 
