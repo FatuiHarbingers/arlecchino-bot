@@ -1,6 +1,6 @@
 {
   "name": "wikiactivity",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "main": "dist/main.js",
   "license": "MIT",
@@ -15,9 +15,11 @@
     "start": "yarn db:migrate && doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#12c15231f6615cecf98558fcd5c2c9aaacb9242c",
-    "@bitomic/wikiactivity-api": "^1.2.0",
+    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#4bb9e55592b4d49e8c15cce0daaefd87bcedc197",
     "@prisma/client": "4.10.1",
+    "@quority/activity": "^1.0.1",
+    "@quority/core": "^4.0.3",
+    "@quority/fandom": "^4.0.7",
     "@sapphire/decorators": "^6.0.0",
     "@sapphire/discord-utilities": "^3.0.0",
     "@sapphire/duration": "^1.0.0",
@@ -34,7 +36,6 @@
     "discord.js": "^14.7.1",
     "ico-to-png": "^0.2.1",
     "ioredis": "^5.3.0",
-    "mw.js": "^2.4.1",
     "mysql2": "^2.3.3",
     "pino": "^8.8.0",
     "pino-pretty": "^9.1.1",

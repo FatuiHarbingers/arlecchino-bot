@@ -1,4 +1,4 @@
-import type { LogEventsItem } from '@bitomic/wikiactivity-api'
+import type { LogEventsItem, UploadEventItem } from '@quority/activity'
 import { bold, EmbedBuilder, hyperlink, strikethrough, time, TimestampStyles } from '@discordjs/builders'
 import type { TFunction } from '@sapphire/plugin-i18next'
 import { isIPv4 } from 'net'
@@ -9,23 +9,23 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 		const embed = new EmbedBuilder()
 
 		embed.setTimestamp( item.date )
-		if ( item.comment.length > 0 ) {
+		if ( item.data.comment.length > 0 ) {
 			embed.addFields( {
 				name: t( 'activity:log-reason' ),
-				value: item.comment
+				value: item.data.comment
 			} )
 		}
 
-		const isIp = isIPv4( item.user )
-		const userUrl = this.getUrl( isIp ? `Special:Contributions/${ item.user }` : `User:${ item.user }` )
-		const author = hyperlink( item.user, userUrl )
+		const isIp = isIPv4( item.data.user )
+		const userUrl = this.getUrl( isIp ? `Special:Contributions/${ item.data.user }` : `User:${ item.data.user }` )
+		const author = hyperlink( item.data.user, userUrl )
 
 		if ( item.isBlock() ) {
 			let i18nKey = 'log-block-blocked'
 			if ( item.isReblocking() ) i18nKey = 'log-block-reblocked'
 			else if ( item.isUnblocking() ) i18nKey = 'log-block-unblocked'
 
-			const targetUser = item.title.split( ':' ).slice( 1 )
+			const targetUser = item.data.title.split( ':' ).slice( 1 )
 				.join( ':' )
 			const targetUrl = this.getUrl( `Special:Contributions/${ targetUser }` )
 			const target = hyperlink( targetUser, targetUrl )
@@ -50,8 +50,8 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			}
 		} else if ( item.isDelete() ) {
 			const i18nKey = item.isRestoring() ? 'undeleted' : 'deleted'
-			const targetUrl = this.getUrl( item.title )
-			const target = hyperlink( item.title, targetUrl )
+			const targetUrl = this.getUrl( item.data.title )
+			const target = hyperlink( item.data.title, targetUrl )
 
 			const description = t( `activity:log-delete-${ i18nKey }`, {
 				replace: {
@@ -61,11 +61,17 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			} )
 			embed.setDescription( description )
 		} else if ( item.isMove() ) {
-			const i18nKey = item.params.supressredirect ? 'no-redirect' : 'redirect'
-			const fromUrl = this.getUrl( item.title )
-			const from = hyperlink( item.title, fromUrl )
-			const toUrl = this.getUrl( item.params.target_title )
-			const to = hyperlink( item.params.target_title, toUrl )
+			const { params } = item.data as unknown as {
+				params: {
+					supressredirect?: boolean
+					target_title: string
+				}
+			}
+			const i18nKey = params.supressredirect ? 'no-redirect' : 'redirect'
+			const fromUrl = this.getUrl( item.data.title )
+			const from = hyperlink( item.data.title, fromUrl )
+			const toUrl = this.getUrl( params.target_title )
+			const to = hyperlink( params.target_title, toUrl )
 
 			const description = t( `activity:log-move-${ i18nKey }`, {
 				replace: {
@@ -80,8 +86,8 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			if ( item.isModifying() ) i18nKey = 'reprotected'
 			else if ( item.isUnprotecting() ) i18nKey = 'unprotected'
 
-			const targetUrl = this.getUrl( item.title )
-			const target = hyperlink( item.title, targetUrl )
+			const targetUrl = this.getUrl( item.data.title )
+			const target = hyperlink( item.data.title, targetUrl )
 
 			const description = t( `activity:log-protect-${ i18nKey }`, {
 				replace: {
@@ -91,14 +97,15 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			} )
 			embed.setDescription( description )
 
+			const { params } = item.data as unknown as { params: { description: string } }
 			if ( item.isProtecting() || item.isModifying() ) {
 				embed.addFields( {
 					name: t( 'activity:log-protect-details' ),
-					value: item.params.description
+					value: params.description
 				} )
 			}
 		} else if ( item.isRights() ) {
-			const targetUser = item.title.split( ':' ).slice( 1 )
+			const targetUser = item.data.title.split( ':' ).slice( 1 )
 				.join( ':' )
 			const targetUrl = this.getUrl( `User:${ targetUser }` )
 			const target = hyperlink( targetUser, targetUrl )
@@ -111,14 +118,28 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			} )
 			embed.setDescription( description )
 
-			const oldgroups = new Set( item.params.oldgroups )
-			const newgroups = new Set( item.params.newgroups )
+			const { params } = item.data as unknown as {
+				params: {
+					oldgroups: string[]
+					oldmetadata: Array<{
+						expiry: string
+						group: string
+					}>
+					newgroups: string[]
+					newmetadata: Array<{
+						expiry: string
+						group: string
+					}>
+				}
+			}
+			const oldgroups = new Set( params.oldgroups )
+			const newgroups = new Set( params.newgroups )
 
 			let oldData: string
-			if ( item.params.oldmetadata.length === 0 ) {
+			if ( params.oldmetadata.length === 0 ) {
 				oldData = t( 'activity:log-rights-none' )
 			} else {
-				oldData = item.params.oldmetadata.map( item => {
+				oldData = params.oldmetadata.map( item => {
 					let detail = newgroups.has( item.group ) ? item.group : strikethrough( item.group )
 					if ( item.expiry !== 'infinity' ) {
 						const expiry = new Date( item.expiry )
@@ -133,10 +154,10 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			}
 
 			let newData: string
-			if ( item.params.newmetadata.length === 0 ) {
+			if ( params.newmetadata.length === 0 ) {
 				newData = t( 'activity:log-rights-none' )
 			} else {
-				newData = item.params.newmetadata.map( item => {
+				newData = params.newmetadata.map( item => {
 					let detail = oldgroups.has( item.group ) ? item.group : bold( item.group )
 					if ( item.expiry !== 'infinity' ) {
 						const expiry = new Date( item.expiry )
@@ -162,13 +183,14 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 					value: newData
 				}
 			)
-		} else if ( item.isUpload() ) {
+		} else {
+			const upload = item as UploadEventItem
 			let i18nKey = 'uploaded'
-			if ( item.isOverwriting() ) i18nKey = 'reuploaded'
-			else if ( item.isReverting() ) i18nKey = 'reverted'
+			if ( upload.isOverwriting() ) i18nKey = 'reuploaded'
+			else if ( upload.isReverting() ) i18nKey = 'reverted'
 
-			const targetUrl = this.getUrl( item.title )
-			const target = hyperlink( item.title, targetUrl )
+			const targetUrl = this.getUrl( upload.data.title )
+			const target = hyperlink( upload.data.title, targetUrl )
 			const description = t( `activity:log-upload-${ i18nKey }`, {
 				replace: {
 					author,
