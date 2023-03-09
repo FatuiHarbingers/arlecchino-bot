@@ -19,7 +19,6 @@ export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
 		this.container.logger.info( 'Running task.' )
 		if ( !this.isReady() ) return
-		const t1 = Date.now()
 
 		const wikis = ( await this.container.prisma.configuration.groupBy( {
 			by: [ 'wiki' ]
@@ -37,7 +36,6 @@ export class UserTask extends ScheduledTask {
 			: new Date( storedLastCheck )
 		// hopefully, the time difference between the server and the bot isn't more than 3 seconds
 		const now = new Date( Date.now() - Time.Second * 3 )
-		this.container.logger.info( lastCheck, now )
 
 		const defaultAvatar = this.container.client.user?.avatarURL( { extension: 'png' } )
 
@@ -97,9 +95,7 @@ export class UserTask extends ScheduledTask {
 			}
 		}
 
-		const t2 = Date.now()
 		await this.container.redis.set( 'wa:last_check', now.getTime() )
-		this.container.logger.info( `Task took ${ t2 - t1 }ms.` )
 	}
 
 	protected async getWebhooks( config: { channel: string, guild: string } ): Promise<[ Webhook, Webhook ] | null> {
