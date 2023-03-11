@@ -16,13 +16,6 @@ export class UserClient extends SapphireClient {
 			username: env.REDIS_USERNAME
 		}
 		super( {
-			api: {
-				acceptedContentMimeTypes: [ 'application/json' ],
-				listenOptions: {
-					port: env.API_PORT
-				},
-				origin: '*'
-			},
 			defaultPrefix: env.DISCORD_PREFIX ?? '!',
 			i18n: {
 				fetchLanguage: context => {
