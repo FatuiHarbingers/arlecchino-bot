@@ -15,7 +15,6 @@
     "start": "yarn db:migrate && doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@arlecchino/api": "ssh://git@github.com:FatuiHarbingers/arlecchino-api.git#4bb9e55592b4d49e8c15cce0daaefd87bcedc197",
     "@prisma/client": "4.10.1",
     "@quority/activity": "^1.0.3",
     "@quority/core": "^4.0.3",
