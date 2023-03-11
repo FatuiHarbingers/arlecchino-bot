@@ -28,7 +28,6 @@ export class ActivityFormatter {
 
 	public constructor( api: string, from: Date, to: Date ) {
 		if ( api.includes( 'fandom' ) ) {
-			// @ts-expect-error - different versions
 			this.wiki = new Wiki( { api, platform: Fandom } )
 		} else {
 			this.wiki = new Wiki( { api } )
