@@ -553,6 +553,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@quority/fandom@npm:^4.0.8":
+  version: 4.0.8
+  resolution: "@quority/fandom@npm:4.0.8"
+  dependencies:
+    "@sapphire/shapeshift": ^3.8.1
+  peerDependencies:
+    "@quority/core": "*"
+  checksum: 16399150a46d21b9050ae578f649078a536adc9e3f0301748cf603d42ced946cb1adfc814639aa74d505a1969b448fb04a57ca9835d750b555892971aa78cfd7
+  languageName: node
+  linkType: hard
+
 "@sapphire/async-queue@npm:^1.5.0":
   version: 1.5.0
   resolution: "@sapphire/async-queue@npm:1.5.0"
@@ -4894,7 +4905,7 @@ __metadata:
     "@prisma/client": 4.10.1
     "@quority/activity": ^1.0.3
     "@quority/core": ^4.0.3
-    "@quority/fandom": ^4.0.7
+    "@quority/fandom": ^4.0.8
     "@sapphire/decorators": ^6.0.0
     "@sapphire/discord-utilities": ^3.0.0
     "@sapphire/duration": ^1.0.0

@@ -28,7 +28,6 @@ export class ActivityFormatter {
 
 	public constructor( api: string, from: Date, to: Date ) {
 		if ( api.includes( 'fandom' ) ) {
-			// @ts-expect-error - different versions
 			this.wiki = new Wiki( { api, platform: Fandom } )
 		} else {
 			this.wiki = new Wiki( { api } )
@@ -87,14 +86,14 @@ export class ActivityFormatter {
 
 		const embeds: EmbedWrapper[] = []
 		for ( const item of activity ) {
-			const embed = await this.createEmbed( item, t )
+			const embed = this.createEmbed( item, t )
 			if ( embed ) embeds.push( embed )
 		}
 
 		return embeds
 	}
 
-	protected async createEmbed( item: ActivityItem, t: TFunction ): Promise<EmbedWrapper | null> {
+	protected createEmbed( item: ActivityItem, t: TFunction ): EmbedWrapper | null {
 		const strategies = this.loadStrategies()
 
 		if ( item.isRecentChanges() ) {

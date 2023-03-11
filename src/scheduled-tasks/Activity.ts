@@ -17,7 +17,6 @@ type ConfigurationWithProfiles = ( Configuration & {
 } )
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
-		this.container.logger.info( 'Running task.' )
 		if ( !this.isReady() ) return
 
 		const wikis = ( await this.container.prisma.configuration.groupBy( {
@@ -129,7 +128,6 @@ export class UserTask extends ScheduledTask {
 	protected isReady(): boolean {
 		if ( !this.container.client.isReady() ) {
 			this.container.logger.warn( 'Client isn\'t ready yet; skipping task.' )
-			this.container.tasks.create( 'activity', null, Time.Second * 20 )
 			return false
 		}
 
