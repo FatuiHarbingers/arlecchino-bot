@@ -154,11 +154,12 @@ export class UserTask extends ScheduledTask {
 	protected async findBots( wiki: Wiki, users: string[] ): Promise<string[]> {
 		const bots: string[] = []
 		for ( let i = 0; i < users.length; i += 50 ) {
+			this.container.logger.debug( 'users', users.slice( i, 50 ) )
 			const result = ( await wiki.queryList( {
 				list: 'users',
 				usprop: [ 'rights' ],
 				ususers: users.slice( i, 50 )
-			} ) ).filter( i => i.rights.includes( 'bot' ) )
+			} ) ).filter( i => i.rights?.includes( 'bot' ) )
 			bots.push( ...result.map( i => i.name ) )
 		}
 		return bots
