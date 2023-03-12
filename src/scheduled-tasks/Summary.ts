@@ -172,6 +172,7 @@ export class UserTask extends ScheduledTask {
 		const recentchanges = await this.getRecentChangesSummary( wiki, from, to )
 		const logevents = await this.getLogEventsSummary( wiki, from, to )
 		const discussions = await this.getDiscussionsSummary( wiki, from, to )
+			.catch( () => null )
 
 		if ( !recentchanges.edits && !logevents.users.length && !discussions?.users.length ) return null
 
