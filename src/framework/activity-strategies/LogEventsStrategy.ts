@@ -40,7 +40,7 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 
 			if ( item.isBlocking() || item.isReblocking() ) {
 				const expiry = item.expiryDate
-				const duration = !expiry || isNaN( expiry )
+				const duration = !expiry || isNaN( expiry as number )
 					? t( 'activity:log-block-expiry-infinite' )
 					: time( expiry, TimestampStyles.RelativeTime )
 				embed.addFields( {
