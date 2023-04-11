@@ -26,7 +26,7 @@
 	"log-upload-uploaded": "📷 **{{ author }}** subió {{ target }}.",
 	"post-left-reply": "💭 **{{ user }}** dejó [una respuesta]({{ replyUrl }}) a una publicación.",
 	"post-created": "💭 **{{ user }}** creó una nueva publicación en {{ category }}: [{{ title }}]({{ replyUrl }}).",
-	"rc-created": "☑ **{{ user }}** creó **{{ page }}**. ({{ diff }})",
+	"rc-created": ":ballot_box_with_check: **{{ user }}** creó **{{ page }}**. ({{ diff }})",
 	"rc-edited": "📝 **{{ user }}** editó **{{ page }}**. ({{ diff }})",
 	"rc-summary": "Resumen",
 	"wall-left-reply": "✉️ **{{ user }}** dejó [una respuesta]({{ replyUrl }}) a un mensaje en el [muro de mensajes de {{ wallOwner }}]({{ wallUrl }}).",
