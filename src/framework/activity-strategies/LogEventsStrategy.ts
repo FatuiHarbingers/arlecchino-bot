@@ -1,4 +1,4 @@
-import type { LogEventsItem, UploadEventItem } from '@quority/activity'
+import type { LogEventsItem, RightsEventItem, UploadEventItem } from '@quority/activity'
 import { bold, EmbedBuilder, hyperlink, strikethrough, time, TimestampStyles } from '@discordjs/builders'
 import type { TFunction } from '@sapphire/plugin-i18next'
 import { isIPv4 } from 'net'
@@ -104,8 +104,25 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 					value: params.description
 				} )
 			}
-		} else if ( item.isRights() ) {
-			const targetUser = item.data.title.split( ':' ).slice( 1 )
+		} else if ( item.isThanks() ) {
+			const data = item.data as {
+				timestamp: string
+				title: string
+				user: string
+			}
+
+			const targetUser = data.title.split( ':' ).slice( 1 )
+				.join( ':' )
+			const targetUrl = this.getUrl( `User:${ targetUser }` )
+			const target = hyperlink( targetUser, targetUrl )
+
+			const description = t( 'activity:thanks', {
+				author,
+				target
+			} )
+			embed.setDescription( description )
+		} else if ( ( item as LogEventsItem ).isRights() ) { // eslint-disable-line no-extra-parens
+			const targetUser = ( item as RightsEventItem ).data.title.split( ':' ).slice( 1 )  // eslint-disable-line no-extra-parens
 				.join( ':' )
 			const targetUrl = this.getUrl( `User:${ targetUser }` )
 			const target = hyperlink( targetUser, targetUrl )
@@ -118,7 +135,7 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			} )
 			embed.setDescription( description )
 
-			const { params } = item.data as unknown as {
+			const { params } = ( item as RightsEventItem ).data as unknown as { // eslint-disable-line no-extra-parens
 				params: {
 					oldgroups: string[]
 					oldmetadata: Array<{

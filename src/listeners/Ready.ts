@@ -11,6 +11,7 @@ export class UserEvent extends Listener {
 		this.container.pino.info( 'Client is ready and running.' )
 
 		this.container.tasks.create( 'presence', null, 0 )
-		this.container.stores.get( 'scheduled-tasks' ).get( 'summary' )?.run( null )
+		this.container.stores.get( 'scheduled-tasks' ).get( 'summary' )
+			?.run( null )
 	}
 }

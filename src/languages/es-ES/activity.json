@@ -21,6 +21,7 @@
 	"log-rights-new-groups": "Nuevos grupos",
 	"log-rights-none": "Ninguno",
 	"log-rights-until": "(hasta {{ time }})",
+	"log-thanks": "🎉 **{{ author }}** agareció a {{ target }}.",
 	"log-upload-reuploaded": "📷 **{{ author }}** subió una nueva versión de {{ target }}.",
 	"log-upload-reverted": "📷 **{{ author }}** revirtió una versión de {{ target }}.",
 	"log-upload-uploaded": "📷 **{{ author }}** subió {{ target }}.",

@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.10.1",
-    "@quority/activity": "^1.0.4",
+    "@quority/activity": "^1.1.1",
     "@quority/core": "^4.0.3",
     "@quority/fandom": "^4.0.8",
     "@sapphire/decorators": "^6.0.0",
