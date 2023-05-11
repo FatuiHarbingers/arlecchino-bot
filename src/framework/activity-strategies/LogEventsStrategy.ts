@@ -116,7 +116,7 @@ export class LogEventsStrategy extends ActivityStrategy<LogEventsItem> {
 			const targetUrl = this.getUrl( `User:${ targetUser }` )
 			const target = hyperlink( targetUser, targetUrl )
 
-			const description = t( 'activity:thanks', {
+			const description = t( 'activity:log-thanks', {
 				author,
 				target
 			} )
