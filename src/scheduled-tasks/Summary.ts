@@ -159,7 +159,7 @@ export class UserTask extends ScheduledTask {
 				list: 'users',
 				usprop: [ 'rights' ],
 				ususers: users.slice( i, 50 )
-			} ) ).filter( i => i.rights.includes( 'bot' ) )
+			} ) ).filter( i => i.rights?.includes( 'bot' ) )
 			bots.push( ...result.map( i => i.name ) )
 		}
 		return bots
