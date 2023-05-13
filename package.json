@@ -15,6 +15,7 @@
     "start": "yarn db:migrate && doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
+    "@bitomic/lumberjack-client": "^1.1.0",
     "@prisma/client": "4.10.1",
     "@quority/activity": "^1.1.1",
     "@quority/core": "^4.0.3",

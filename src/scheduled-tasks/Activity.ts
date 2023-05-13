@@ -40,6 +40,7 @@ export class UserTask extends ScheduledTask {
 
 		for ( const api of wikis ) {
 			try {
+				this.container.logger.info( `Checking: ${ api }` )
 				const formatter = new ActivityFormatter( api, lastCheck, now )
 				const activity = await formatter.loadActivity()
 				if ( !activity ) continue
