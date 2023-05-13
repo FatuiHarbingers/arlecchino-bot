@@ -12,9 +12,11 @@ export class Logger {
 		return level in this.lumberjack
 	}
 
-	protected log( log: Log | string, level: 'debug' | 'error' | 'info' | 'warn' ): void {
+	protected log( log: Log | string | Record<string, unknown>, level: 'debug' | 'error' | 'info' | 'warn' ): void {
 		if ( typeof log === 'string' ) {
 			log = { message: log }
+		} else if ( !( 'message' in log ) && !( 'data' in log ) ) {
+			log = { data: log }
 		}
 
 		this.pino[ level ]( log )

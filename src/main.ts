@@ -7,9 +7,9 @@ import { container } from '@sapphire/framework'
 	try {
 		await client.login( env.DISCORD_TOKEN )
 	} catch ( e ) {
-		container.pino.error( e )
+		container.logger.error( e )
 		client.destroy()
 		process.exit( 1 )
 	}
 } )()
-	.catch( e => container.pino.error( e ) )
+	.catch( e => container.logger.error( e ) )
