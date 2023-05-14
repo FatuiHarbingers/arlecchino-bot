@@ -48,13 +48,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bitomic/lumberjack-client@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@bitomic/lumberjack-client@npm:1.1.0"
-  checksum: 22084a7e76cd289ac19214bd94e0ccd438058f7ff682dd57ebe541ba919863ca8c80c268af38081c15140d1f62dd34e621f2729e62d546dc7992c6a11e818001
-  languageName: node
-  linkType: hard
-
 "@canvas/image-data@npm:^1.0.0":
   version: 1.0.0
   resolution: "@canvas/image-data@npm:1.0.0"
@@ -5233,7 +5226,6 @@ __metadata:
   resolution: "wikiactivity@workspace:."
   dependencies:
     "@bitomic/eslint-config": ^1.0.0
-    "@bitomic/lumberjack-client": ^1.1.0
     "@commitlint/cli": ^17.4.2
     "@commitlint/config-conventional": ^17.4.2
     "@prisma/client": 4.10.1
