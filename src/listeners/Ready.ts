@@ -8,7 +8,7 @@ import { Events } from 'discord.js'
 } )
 export class UserEvent extends Listener {
 	public run(): void {
-		this.container.logger.info( 'Client is ready and running.' )
+		this.container.pino.info( 'Client is ready and running.' )
 
 		this.container.tasks.create( 'presence', null, 0 )
 		this.container.stores.get( 'scheduled-tasks' ).get( 'summary' )

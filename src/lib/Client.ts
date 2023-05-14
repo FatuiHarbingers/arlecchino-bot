@@ -3,6 +3,8 @@ import { env } from './environment'
 import { PrismaClient } from '@prisma/client'
 import Redis from 'ioredis'
 import { ScheduledTaskRedisStrategy } from '@sapphire/plugin-scheduled-tasks/register-redis'
+import type { Logger } from 'pino'
+import { pino } from './pino'
 
 export class UserClient extends SapphireClient {
 	public constructor() {
@@ -38,6 +40,7 @@ export class UserClient extends SapphireClient {
 				} )
 			}
 		} )
+		container.pino = pino
 		container.prisma = new PrismaClient()
 		container.redis = new Redis( redisOptions )
 	}
@@ -49,6 +52,7 @@ export class UserClient extends SapphireClient {
 
 declare module '@sapphire/pieces' {
 	interface Container {
+		pino: Logger
 		prisma: PrismaClient
 		redis: Redis
 	}

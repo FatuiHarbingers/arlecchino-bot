@@ -23,7 +23,7 @@ export class UserTask extends ScheduledTask {
 			by: [ 'wiki' ]
 		} ) ).map( i => i.wiki )
 		if ( wikis.length === 0 ) {
-			this.container.logger.warn( 'No wikis to check.' )
+			this.container.pino.warn( 'No wikis to check.' )
 			await this.container.redis.set( 'wa:last_check', Date.now() )
 			return
 		}
@@ -40,7 +40,7 @@ export class UserTask extends ScheduledTask {
 
 		for ( const api of wikis ) {
 			try {
-				this.container.logger.info( `Checking: ${ api }` )
+				this.container.pino.info( `Checking: ${ api }` )
 				const formatter = new ActivityFormatter( api, lastCheck, now )
 				const activity = await formatter.loadActivity()
 				if ( !activity ) continue
@@ -91,7 +91,7 @@ export class UserTask extends ScheduledTask {
 					}
 				}
 			} catch ( e ) {
-				this.container.logger.error( `There was an error for ${ api }.`, e )
+				this.container.pino.error( `There was an error for ${ api }.`, e )
 			}
 		}
 
@@ -120,7 +120,7 @@ export class UserTask extends ScheduledTask {
 				return [ w1, w2 ]
 			}
 		} catch ( e ) {
-			this.container.logger.error( `There was an error while trying to fetch the webhooks from guild ${ config.guild } (channel ${ config.channel }).`, e )
+			this.container.pino.error( `There was an error while trying to fetch the webhooks from guild ${ config.guild } (channel ${ config.channel }).`, e )
 		}
 
 		return null
@@ -128,7 +128,7 @@ export class UserTask extends ScheduledTask {
 
 	protected isReady(): boolean {
 		if ( !this.container.client.isReady() ) {
-			this.container.logger.warn( 'Client isn\'t ready yet; skipping task.' )
+			this.container.pino.warn( 'Client isn\'t ready yet; skipping task.' )
 			return false
 		}
 
@@ -143,7 +143,7 @@ export class UserTask extends ScheduledTask {
 				const guild = await this.container.client.guilds.fetch( config.guild )
 				const lang = await this.container.i18n.fetchLanguage( { channel: null, guild, user: null } )
 				if ( !lang ) {
-					this.container.logger.warn( `Couldn't fetch a language for guild ${ config.guild }.` )
+					this.container.pino.warn( `Couldn't fetch a language for guild ${ config.guild }.` )
 					continue
 				}
 
@@ -151,7 +151,7 @@ export class UserTask extends ScheduledTask {
 				list.push( config )
 				if ( !perLanguage.has( lang ) ) perLanguage.set( lang, list )
 			} catch ( e ) {
-				this.container.logger.error( `There was an error while trying to fetch guild ${ config.guild }.`, e )
+				this.container.pino.error( `There was an error while trying to fetch guild ${ config.guild }.`, e )
 			}
 		}
 

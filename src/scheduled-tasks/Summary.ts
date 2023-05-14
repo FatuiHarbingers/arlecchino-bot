@@ -19,13 +19,13 @@ type ConfigurationWithProfiles = ( Configuration & {
 export class UserTask extends ScheduledTask {
 	public override async run(): Promise<void> {
 		if ( !this.isReady() ) return
-		this.container.logger.info( 'Posting daily summary.' )
+		this.container.pino.info( 'Posting daily summary.' )
 
 		const wikis = ( await this.container.prisma.configuration.groupBy( {
 			by: [ 'wiki' ]
 		} ) ).map( i => i.wiki )
 		if ( wikis.length === 0 ) {
-			this.container.logger.warn( 'No wikis to check.' )
+			this.container.pino.warn( 'No wikis to check.' )
 			return
 		}
 
@@ -141,12 +141,12 @@ export class UserTask extends ScheduledTask {
 								username: profile?.name ?? defaultUsername,
 							} )
 						} catch ( e ) {
-							this.container.logger.error( `There was an error for ${ api } in ${ config.guild }.`, e )
+							this.container.pino.error( `There was an error for ${ api } in ${ config.guild }.`, e )
 						}
 					}
 				}
 			} catch ( e ) {
-				this.container.logger.error( `There was an error for ${ api }.`, e )
+				this.container.pino.error( `There was an error for ${ api }.`, e )
 			}
 		}
 	}
@@ -154,7 +154,7 @@ export class UserTask extends ScheduledTask {
 	protected async findBots( wiki: Wiki, users: string[] ): Promise<string[]> {
 		const bots: string[] = []
 		for ( let i = 0; i < users.length; i += 50 ) {
-			this.container.logger.debug( 'users', users.slice( i, 50 ) )
+			this.container.pino.debug( 'users', users.slice( i, 50 ) )
 			const result = ( await wiki.queryList( {
 				list: 'users',
 				usprop: [ 'rights' ],
@@ -306,7 +306,7 @@ export class UserTask extends ScheduledTask {
 
 	protected isReady(): boolean {
 		if ( !this.container.client.isReady() ) {
-			this.container.logger.warn( 'Client isn\'t ready yet; skipping task.' )
+			this.container.pino.warn( 'Client isn\'t ready yet; skipping task.' )
 			return false
 		}
 
@@ -321,7 +321,7 @@ export class UserTask extends ScheduledTask {
 				const guild = await this.container.client.guilds.fetch( config.guild )
 				const lang = await this.container.i18n.fetchLanguage( { channel: null, guild, user: null } )
 				if ( !lang ) {
-					this.container.logger.warn( `Couldn't fetch a language for guild ${ config.guild }.` )
+					this.container.pino.warn( `Couldn't fetch a language for guild ${ config.guild }.` )
 					continue
 				}
 
@@ -329,7 +329,7 @@ export class UserTask extends ScheduledTask {
 				list.push( config )
 				if ( !perLanguage.has( lang ) ) perLanguage.set( lang, list )
 			} catch ( e ) {
-				this.container.logger.error( `There was an error while trying to fetch guild ${ config.guild }.`, e )
+				this.container.pino.error( `There was an error while trying to fetch guild ${ config.guild }.`, e )
 			}
 		}
 
