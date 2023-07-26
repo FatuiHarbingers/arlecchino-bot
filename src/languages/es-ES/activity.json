@@ -25,7 +25,7 @@
 	"log-upload-reuploaded": "📷 **{{ author }}** subió una nueva versión de {{ target }}.",
 	"log-upload-reverted": "📷 **{{ author }}** revirtió una versión de {{ target }}.",
 	"log-upload-uploaded": "📷 **{{ author }}** subió {{ target }}.",
-	"post-left-reply": "💭 **{{ user }}** dejó [una respuesta]({{ replyUrl }}) a una publicación.",
+	"post-left-reply": "💭 **{{ user }}** dejó [una respuesta]({{ replyUrl }}) a una publicación: {{ post }}.",
 	"post-created": "💭 **{{ user }}** creó una nueva publicación en {{ category }}: [{{ title }}]({{ replyUrl }}).",
 	"rc-created": ":ballot_box_with_check: **{{ user }}** creó **{{ page }}**. ({{ diff }})",
 	"rc-edited": "📝 **{{ user }}** editó **{{ page }}**. ({{ diff }})",

@@ -46,6 +46,7 @@ export class DiscussionsStrategy extends ActivityStrategy<DiscussionsItem> {
 			const description = t( `activity:post-${ i18nKey }`, {
 				replace: {
 					category: item.category,
+					post: item.data._embedded.thread?.[ 0 ].title,
 					replyUrl: item.getUrl(),
 					title: item.data.title,
 					user

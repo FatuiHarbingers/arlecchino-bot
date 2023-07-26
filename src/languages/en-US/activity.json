@@ -25,7 +25,7 @@
 	"log-upload-reuploaded": "📷 **{{ author }}** uploaded a new version of {{ target }}.",
 	"log-upload-reverted": "📷 **{{ author }}** reverted a version of {{ target }}.",
 	"log-upload-uploaded": "📷 **{{ author }}** uploaded {{ target }}.",
-	"post-left-reply": "💭 **{{ user }}** left [a reply]({{ replyUrl }}) to a post.",
+	"post-left-reply": "💭 **{{ user }}** left [a reply]({{ replyUrl }}) to a post: {{ post }}.",
 	"post-created": "💭 **{{ user }}** created a new post in {{ category }}: [{{ title }}]({{ replyUrl }}).",
 	"rc-created": "☑ **{{ user }}** created **{{ page }}**. ({{ diff }})",
 	"rc-edited": "📝 **{{ user }}** edited **{{ page }}**. ({{ diff }})",
