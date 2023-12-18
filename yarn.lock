@@ -833,14 +833,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-scheduled-tasks@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@sapphire/plugin-scheduled-tasks@npm:6.0.0"
+"@sapphire/plugin-scheduled-tasks@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "@sapphire/plugin-scheduled-tasks@npm:9.1.0"
   dependencies:
-    "@sapphire/stopwatch": ^1.5.0
-    "@sapphire/utilities": ^3.11.0
-    tslib: ^2.4.0
-  checksum: 9658953cd0b5da239007438b33573f9041215c17c6e7ed686a1e2f79468b303d41442b3769b77e2250d4bd21bafdeded26f7bd8fb28a46fa8fd808ba0bb65c44
+    "@sapphire/stopwatch": ^1.5.1
+    "@sapphire/utilities": ^3.14.0
+    bullmq: 3.15.8
+    tslib: ^2.6.2
+  checksum: a028ef4ae5e03688053bf7a2f7ab6c100cbea05cd5b9a1b4f19dd3086cbe5be8706770a377b1119795dfc4fdd3aa70fd804e1351e07432d156fca1ea489ec491
   languageName: node
   linkType: hard
 
@@ -886,6 +887,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/stopwatch@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "@sapphire/stopwatch@npm:1.5.1"
+  dependencies:
+    tslib: ^2.6.2
+  checksum: b91c8843b973515c5f71889ce0ebdd84ead2da369126e60d9e91f36efa6281e8c36c1f57e63b34b982241958943a35c75087ff4aa7b82f4248fccb3aa5a038d7
+  languageName: node
+  linkType: hard
+
 "@sapphire/timer-manager@npm:^1.0.0":
   version: 1.0.0
   resolution: "@sapphire/timer-manager@npm:1.0.0"
@@ -897,6 +907,13 @@ __metadata:
   version: 3.11.0
   resolution: "@sapphire/utilities@npm:3.11.0"
   checksum: 3c8521038b8879524e8114f39eefc8b3b06cf825995f709684238b5cb14bd7df06d232a26a88f79160df290a66f9aa3133f5ce4ff8e2398033db9f301ad31e0d
+  languageName: node
+  linkType: hard
+
+"@sapphire/utilities@npm:^3.14.0":
+  version: 3.14.0
+  resolution: "@sapphire/utilities@npm:3.14.0"
+  checksum: 98bea8dc12ac60696c499dbfd76cdaf2d3a04eeea73d14512e3f91808d8dd2609a3a4d9b0d4c4a76e666dfd1d2e8fa69995d34d562ae412316d013a1db5820d8
   languageName: node
   linkType: hard
 
@@ -1452,6 +1469,22 @@ __metadata:
     base64-js: ^1.3.1
     ieee754: ^1.2.1
   checksum: 5ad23293d9a731e4318e420025800b42bf0d264004c0286c8cc010af7a270c7a0f6522e84f54b9ad65cbd6db20b8badbfd8d2ebf4f80fa03dab093b89e68c3f9
+  languageName: node
+  linkType: hard
+
+"bullmq@npm:3.15.8":
+  version: 3.15.8
+  resolution: "bullmq@npm:3.15.8"
+  dependencies:
+    cron-parser: ^4.6.0
+    glob: ^8.0.3
+    ioredis: ^5.3.2
+    lodash: ^4.17.21
+    msgpackr: ^1.6.2
+    semver: ^7.3.7
+    tslib: ^2.0.0
+    uuid: ^9.0.0
+  checksum: bca20de291acbb97c67736c2d29b88b4f99e372ffd818b2041d4629ffba126a8c75ba6e25a1d181053c6e03ee4e260020e67fbb91412908040273187146493a4
   languageName: node
   linkType: hard
 
@@ -2833,6 +2866,23 @@ __metadata:
     redis-parser: ^3.0.0
     standard-as-callback: ^2.1.0
   checksum: 6c98cb8f8772ad4bb2b6b7a0a224e4a63f4759f9a28e84205f18788552f08221d51f391c10892dca01a1b10b2804d0a7e6082b0b7decd65538a5fb6b0f4f1f82
+  languageName: node
+  linkType: hard
+
+"ioredis@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "ioredis@npm:5.3.2"
+  dependencies:
+    "@ioredis/commands": ^1.1.1
+    cluster-key-slot: ^1.1.0
+    debug: ^4.3.4
+    denque: ^2.1.0
+    lodash.defaults: ^4.2.0
+    lodash.isarguments: ^3.1.0
+    redis-errors: ^1.2.0
+    redis-parser: ^3.0.0
+    standard-as-callback: ^2.1.0
+  checksum: 9a23559133e862a768778301efb68ae8c2af3c33562174b54a4c2d6574b976e85c75a4c34857991af733e35c48faf4c356e7daa8fb0a3543d85ff1768c8754bc
   languageName: node
   linkType: hard
 
@@ -5026,6 +5076,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -5239,7 +5296,7 @@ __metadata:
     "@sapphire/pieces": ^3.6.0
     "@sapphire/plugin-api": ^5.0.0
     "@sapphire/plugin-i18next": ^5.0.0
-    "@sapphire/plugin-scheduled-tasks": ^6.0.0
+    "@sapphire/plugin-scheduled-tasks": ^9.1.0
     "@sapphire/shapeshift": ^3.8.1
     "@sapphire/utilities": ^3.11.0
     "@types/node": ^18.11.18
