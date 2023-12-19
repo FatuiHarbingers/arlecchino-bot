@@ -1455,19 +1455,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bullmq@npm:^3.6.4":
-  version: 3.10.0
-  resolution: "bullmq@npm:3.10.0"
+"bullmq@npm:^4.16.0":
+  version: 4.16.0
+  resolution: "bullmq@npm:4.16.0"
   dependencies:
     cron-parser: ^4.6.0
     glob: ^8.0.3
-    ioredis: ^5.3.0
+    ioredis: ^5.3.2
     lodash: ^4.17.21
     msgpackr: ^1.6.2
-    semver: ^7.3.7
+    node-abort-controller: ^3.1.1
+    semver: ^7.5.4
     tslib: ^2.0.0
     uuid: ^9.0.0
-  checksum: efa652831374ea5be31d7de04cb4aa31e0ec249433bef8502c1ae4b52a81aeef5566c069fcea00e3cfe133afa618392347f216b6a9c7d4122a48600978b0ddbf
+  checksum: f74c08438f4a2abb84e61292c9ecee30532fedc62e6f648b2c4b7ce804a713d14637b5c525f954f97d3b722e4d31da1f0a15793920cf814e6d626675b8ca3b19
   languageName: node
   linkType: hard
 
@@ -2836,6 +2837,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ioredis@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "ioredis@npm:5.3.2"
+  dependencies:
+    "@ioredis/commands": ^1.1.1
+    cluster-key-slot: ^1.1.0
+    debug: ^4.3.4
+    denque: ^2.1.0
+    lodash.defaults: ^4.2.0
+    lodash.isarguments: ^3.1.0
+    redis-errors: ^1.2.0
+    redis-parser: ^3.0.0
+    standard-as-callback: ^2.1.0
+  checksum: 9a23559133e862a768778301efb68ae8c2af3c33562174b54a4c2d6574b976e85c75a4c34857991af733e35c48faf4c356e7daa8fb0a3543d85ff1768c8754bc
+  languageName: node
+  linkType: hard
+
 "ip@npm:^2.0.0":
   version: 2.0.0
   resolution: "ip@npm:2.0.0"
@@ -3706,6 +3724,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-abort-controller@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "node-abort-controller@npm:3.1.1"
+  checksum: 2c340916af9710328b11c0828223fc65ba320e0d082214a211311bf64c2891028e42ef276b9799188c4ada9e6e1c54cf7a0b7c05dd9d59fcdc8cd633304c8047
+  languageName: node
+  linkType: hard
+
 "node-gyp-build-optional-packages@npm:5.0.7":
   version: 5.0.7
   resolution: "node-gyp-build-optional-packages@npm:5.0.7"
@@ -4534,6 +4559,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semver@npm:^7.5.4":
+  version: 7.5.4
+  resolution: "semver@npm:7.5.4"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
+  languageName: node
+  linkType: hard
+
 "seq-queue@npm:^0.0.5":
   version: 0.0.5
   resolution: "seq-queue@npm:0.0.5"
@@ -5245,7 +5281,7 @@ __metadata:
     "@types/node": ^18.11.18
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
-    bullmq: ^3.6.4
+    bullmq: ^4.16.0
     colorette: ^2.0.19
     discord-api-types: ^0.37.31
     discord.js: ^14.7.1

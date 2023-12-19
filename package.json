@@ -29,7 +29,7 @@
     "@sapphire/plugin-scheduled-tasks": "^6.0.0",
     "@sapphire/shapeshift": "^3.8.1",
     "@sapphire/utilities": "^3.11.0",
-    "bullmq": "^3.6.4",
+    "bullmq": "^4.16.0",
     "colorette": "^2.0.19",
     "discord-api-types": "^0.37.31",
     "discord.js": "^14.7.1",
