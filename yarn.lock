@@ -2527,7 +2527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^8.0.0, glob@npm:^8.0.1, glob@npm:^8.0.3":
+"glob@npm:^8.0.1, glob@npm:^8.0.3":
   version: 8.1.0
   resolution: "glob@npm:8.1.0"
   dependencies:
@@ -2635,13 +2635,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"help-me@npm:^4.0.1":
-  version: 4.2.0
-  resolution: "help-me@npm:4.2.0"
-  dependencies:
-    glob: ^8.0.0
-    readable-stream: ^3.6.0
-  checksum: 6548acba10dd79ebfc93f0d739c4cb2f32f7932c8d87b091992f3a0f844706263415eab81be015aed4ab874154232beb666920d7e280502c6bba29a40cde343e
+"help-me@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "help-me@npm:5.0.0"
+  checksum: 474436627b6c7d2f406a2768453895889eb2712c8ded4c47658d5c6dd46c2ff3f742be4e4e8dedd57b7f1ac6b28803896a2e026a32a977f507222c16f23ab2e1
   languageName: node
   linkType: hard
 
@@ -4033,15 +4030,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:^9.1.1":
-  version: 9.4.0
-  resolution: "pino-pretty@npm:9.4.0"
+"pino-pretty@npm:^10.3.1":
+  version: 10.3.1
+  resolution: "pino-pretty@npm:10.3.1"
   dependencies:
     colorette: ^2.0.7
     dateformat: ^4.6.3
     fast-copy: ^3.0.0
     fast-safe-stringify: ^2.1.1
-    help-me: ^4.0.1
+    help-me: ^5.0.0
     joycon: ^3.1.1
     minimist: ^1.2.6
     on-exit-leak-free: ^2.1.0
@@ -4053,7 +4050,7 @@ __metadata:
     strip-json-comments: ^3.1.1
   bin:
     pino-pretty: bin.js
-  checksum: 4870d44879048219003b0c6f28181ca871e62c1d9679b07b3f3d703e961284b5b0df495e4be95954a0e467ded34f2323bc9cf3280c3a143311b364a733a08e03
+  checksum: 51e2d670745a396ddfd12da9f7ea5c2e4dc93a84589ffb29f64f4118d4b83ab636ee21f4aee7a47adb04664d5d921fb33e039e0ea961bb1c1cffefa28444563c
   languageName: node
   linkType: hard
 
@@ -5257,7 +5254,7 @@ __metadata:
     mysql2: ^2.3.3
     newrelic: ^10.1.0
     pino: ^8.8.0
-    pino-pretty: ^9.1.1
+    pino-pretty: ^10.3.1
     prisma: 4.10.1
     rimraf: ^4.1.2
     ts-dotenv: ^0.9.0
