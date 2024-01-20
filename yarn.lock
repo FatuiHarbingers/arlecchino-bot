@@ -347,6 +347,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "@fastify/busboy@npm:2.1.0"
+  checksum: 3233abd10f73e50668cb4bb278a79b7b3fadd30215ac6458299b0e5a09a29c3586ec07597aae6bd93f5cbedfcef43a8aeea51829cd28fc13850cdbcd324c28d5
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -807,16 +814,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-api@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@sapphire/plugin-api@npm:5.0.1"
+"@sapphire/plugin-api@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "@sapphire/plugin-api@npm:6.1.1"
   dependencies:
-    "@types/psl": ^1.1.0
-    "@types/ws": ^8.5.4
-    psl: ^1.9.0
-    tslib: ^2.5.0
-    undici: ^5.20.0
-  checksum: 82c6fd9d48f07c7912e47992c5d46cf1b461fc1ac4348f6c5a3d08395274a74619c769fe5c244fbdb36d7def4a03bca71f9c066bd83d54d55e202bf11e5991a7
+    "@types/ws": ^8.5.10
+    tldts: ^6.1.2
+    tslib: ^2.6.2
+    undici: ^6.4.0
+  checksum: cc64f5eb67ad9f2b9f4237c74d20a9eaba618eca24b4677b054c71f7462b08e765710e56bf1e13d6a0a25137aa91e8eaa68850925ab6100b7a54cd8b240228e8
   languageName: node
   linkType: hard
 
@@ -993,13 +999,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/psl@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@types/psl@npm:1.1.0"
-  checksum: 648a4a40827fb101a05616b9c448b04d40c467db9f09e08099274759fd5e032e7d276013296679765c7d7359f43f0479094c1d8b6a56a8f9445b84b5a9af1263
-  languageName: node
-  linkType: hard
-
 "@types/semver@npm:^7.3.12":
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
@@ -1014,7 +1013,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.5.3, @types/ws@npm:^8.5.4":
+"@types/ws@npm:^8.5.10":
+  version: 8.5.10
+  resolution: "@types/ws@npm:8.5.10"
+  dependencies:
+    "@types/node": "*"
+  checksum: 3ec416ea2be24042ebd677932a462cf16d2080393d8d7d0b1b3f5d6eaa4a7387aaf0eefb99193c0bfd29444857cf2e0c3ac89899e130550dc6c14ada8a46d25e
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.5.3":
   version: 8.5.4
   resolution: "@types/ws@npm:8.5.4"
   dependencies:
@@ -4155,7 +4163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"psl@npm:^1.1.33, psl@npm:^1.9.0":
+"psl@npm:^1.1.33":
   version: 1.9.0
   resolution: "psl@npm:1.9.0"
   checksum: 20c4277f640c93d393130673f392618e9a8044c6c7bf61c53917a0fddb4952790f5f362c6c730a9c32b124813e173733f9895add8d26f566ed0ea0654b2e711d
@@ -4908,6 +4916,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tldts-core@npm:^6.1.2":
+  version: 6.1.2
+  resolution: "tldts-core@npm:6.1.2"
+  checksum: fb06d0be0075e2b7c660256e2903a924869fc80a27115dd00659d9ddf50a9fcd4ffbdffe9653c9afdb0e2acddecacc3fafde58025391abc99b79e8896310451d
+  languageName: node
+  linkType: hard
+
+"tldts@npm:^6.1.2":
+  version: 6.1.2
+  resolution: "tldts@npm:6.1.2"
+  dependencies:
+    tldts-core: ^6.1.2
+  bin:
+    tldts: bin/cli.js
+  checksum: e80e51ff9cddbb227a5f20e21269abe39fd4703a77227996c4d766ce9feb1f6047f666e8cc8caa98c152a0caec05a12380f06044b6f6f076e95163ae5c7073a9
+  languageName: node
+  linkType: hard
+
 "to-data-view@npm:^1.1.0":
   version: 1.1.0
   resolution: "to-data-view@npm:1.1.0"
@@ -5026,6 +5052,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -5108,12 +5141,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1, undici@npm:^5.20.0":
+"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1":
   version: 5.20.0
   resolution: "undici@npm:5.20.0"
   dependencies:
     busboy: ^1.6.0
   checksum: 25412a785b2bd0b12f0bb0ec47ef00aa7a611ca0e570cb7af97cffe6a42e0d78e4b15190363a43771e9002defc3c6647c1b2d52201b3f64e2196819db4d150d3
+  languageName: node
+  linkType: hard
+
+"undici@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "undici@npm:6.4.0"
+  dependencies:
+    "@fastify/busboy": ^2.0.0
+  checksum: af54fd0baf6b4ae166fed406ac2efe22d7e3a8b2fb2f393268eb494f8f8e6494151958e4ec02120d1f5773c1e5610c91711e2281b6e11ce5d9ebcff44dcf8620
   languageName: node
   linkType: hard
 
@@ -5237,7 +5279,7 @@ __metadata:
     "@sapphire/duration": ^1.0.0
     "@sapphire/framework": 4.0.1
     "@sapphire/pieces": ^3.6.0
-    "@sapphire/plugin-api": ^5.0.0
+    "@sapphire/plugin-api": ^6.1.1
     "@sapphire/plugin-i18next": ^5.0.0
     "@sapphire/plugin-scheduled-tasks": ^6.0.0
     "@sapphire/shapeshift": ^3.8.1
