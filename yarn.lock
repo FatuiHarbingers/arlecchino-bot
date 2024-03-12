@@ -563,31 +563,61 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:4.10.1":
-  version: 4.10.1
-  resolution: "@prisma/client@npm:4.10.1"
-  dependencies:
-    "@prisma/engines-version": 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
+"@prisma/client@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@prisma/client@npm:5.11.0"
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: f335dfc7dc5017d6f0f4171f3727ef2d3297495640f5063528e3643c2959c492a640a452880e04691674a7f258a8c552c7de45fb4c86270055d363e0fce18a6d
+  checksum: 2d76e66fe088b3eaa64a88a50261886ae746800fe57b8e8e2ed584431b5675b1d067bce3566227242c69de9dae11fb561bc1ba04fb38ff2d1cfe9aabd7430557
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19":
-  version: 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
-  resolution: "@prisma/engines-version@npm:4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19"
-  checksum: 6433a58c3d1c6016af64771c9fc8798d0c82eee0a8abc3dd43dfc6b019d9686b428592093dd1dec892598e37bbb3a5946d9d1a6cdecf5487ba78b1906af417d4
+"@prisma/debug@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@prisma/debug@npm:5.11.0"
+  checksum: 37c130b40ed3b8cb81ef6df67aac29eb914aba331b186b55478f279fce37ae190d34fdb9c37fe33bba2fcc54c3fef21d06629c7f88addeb17b21fc22dea4120d
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:4.10.1":
-  version: 4.10.1
-  resolution: "@prisma/engines@npm:4.10.1"
-  checksum: 359e32db3155640315661055d8e6430d60c10ff057b5d4c070164587d872ab6d4c292cee5ac35d364c1a2f6da0265fa847023c5cc1a4bf3c067fbecbbb638273
+"@prisma/engines-version@npm:5.11.0-15.efd2449663b3d73d637ea1fd226bafbcf45b3102":
+  version: 5.11.0-15.efd2449663b3d73d637ea1fd226bafbcf45b3102
+  resolution: "@prisma/engines-version@npm:5.11.0-15.efd2449663b3d73d637ea1fd226bafbcf45b3102"
+  checksum: 557de48bc9cb78505ff70e283f7973901e65df60b1d6a2695044df18c30569d0e82d46f9235e980d279fd08ff2cc928f77e8e9250cfc1a3caa53745e93fdaa64
+  languageName: node
+  linkType: hard
+
+"@prisma/engines@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@prisma/engines@npm:5.11.0"
+  dependencies:
+    "@prisma/debug": 5.11.0
+    "@prisma/engines-version": 5.11.0-15.efd2449663b3d73d637ea1fd226bafbcf45b3102
+    "@prisma/fetch-engine": 5.11.0
+    "@prisma/get-platform": 5.11.0
+  checksum: 927ba456fdd8d60704b48d294e9ff91ca7d260617b67b7f2bc20ddeb6c5aead36af5cbf9348d17c71c2217ecce4f17d8f0676ab780fdadb27b8d95675a032379
+  languageName: node
+  linkType: hard
+
+"@prisma/fetch-engine@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@prisma/fetch-engine@npm:5.11.0"
+  dependencies:
+    "@prisma/debug": 5.11.0
+    "@prisma/engines-version": 5.11.0-15.efd2449663b3d73d637ea1fd226bafbcf45b3102
+    "@prisma/get-platform": 5.11.0
+  checksum: 708650f95d9cd3537c067934921af46a7674c186469a952399580bc6834fccd3df2f35867a6da0f3f472d3cd11a007f777c1a95c0dd0cc5f19ea53ecb2af7ba2
+  languageName: node
+  linkType: hard
+
+"@prisma/get-platform@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@prisma/get-platform@npm:5.11.0"
+  dependencies:
+    "@prisma/debug": 5.11.0
+  checksum: c3712ca6d56bc47f420280960aca167bf44a47a23eb63d310ae1c144f27c938b9a658a6c3dc4555b53f2de16083e371775216a3d282524459143b9fe3c7b84db
   languageName: node
   linkType: hard
 
@@ -4092,15 +4122,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:4.10.1":
-  version: 4.10.1
-  resolution: "prisma@npm:4.10.1"
+"prisma@npm:5.11.0":
+  version: 5.11.0
+  resolution: "prisma@npm:5.11.0"
   dependencies:
-    "@prisma/engines": 4.10.1
+    "@prisma/engines": 5.11.0
   bin:
     prisma: build/index.js
-    prisma2: build/index.js
-  checksum: e4078909ad07bcfbe19e10aa0822dca47622b099b4ad6f48da743d47a658e25662de757b5b0e3bbfcd04c0b346dfcfe4d1fa6f0486312dfd8b193b32795ed5ce
+  checksum: 15d30454347381122c6ea5864754ae15e59d2d9771733640e549e11acf9679eb4a668788cd05f6f93ea8479e118b2fcb3a012df3d6e036a36675f22bdaeaea84
   languageName: node
   linkType: hard
 
@@ -5228,7 +5257,7 @@ __metadata:
     "@bitomic/eslint-config": ^1.0.0
     "@commitlint/cli": ^17.4.2
     "@commitlint/config-conventional": ^17.4.2
-    "@prisma/client": 4.10.1
+    "@prisma/client": 5.11.0
     "@quority/activity": ^1.1.1
     "@quority/core": ^4.0.3
     "@quority/fandom": ^4.0.8
@@ -5258,7 +5287,7 @@ __metadata:
     newrelic: ^10.1.0
     pino: ^8.8.0
     pino-pretty: ^9.1.1
-    prisma: 4.10.1
+    prisma: 5.11.0
     rimraf: ^4.1.2
     ts-dotenv: ^0.9.0
     typescript: ^4.9.4
