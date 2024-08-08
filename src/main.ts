@@ -1,5 +1,4 @@
 import '@sapphire/plugin-i18next/register'
-import 'newrelic'
 import { env, UserClient } from './lib'
 import { container } from '@sapphire/framework'
 
