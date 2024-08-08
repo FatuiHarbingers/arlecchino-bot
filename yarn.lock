@@ -652,16 +652,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-api@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@sapphire/plugin-api@npm:5.0.1"
+"@sapphire/plugin-api@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "@sapphire/plugin-api@npm:6.1.1"
   dependencies:
-    "@types/psl": ^1.1.0
-    "@types/ws": ^8.5.4
-    psl: ^1.9.0
-    tslib: ^2.5.0
-    undici: ^5.20.0
-  checksum: 82c6fd9d48f07c7912e47992c5d46cf1b461fc1ac4348f6c5a3d08395274a74619c769fe5c244fbdb36d7def4a03bca71f9c066bd83d54d55e202bf11e5991a7
+    "@types/ws": ^8.5.10
+    tldts: ^6.1.2
+    tslib: ^2.6.2
+    undici: ^6.4.0
+  checksum: cc64f5eb67ad9f2b9f4237c74d20a9eaba618eca24b4677b054c71f7462b08e765710e56bf1e13d6a0a25137aa91e8eaa68850925ab6100b7a54cd8b240228e8
   languageName: node
   linkType: hard
 
@@ -824,13 +823,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/psl@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@types/psl@npm:1.1.0"
-  checksum: 648a4a40827fb101a05616b9c448b04d40c467db9f09e08099274759fd5e032e7d276013296679765c7d7359f43f0479094c1d8b6a56a8f9445b84b5a9af1263
-  languageName: node
-  linkType: hard
-
 "@types/semver@npm:^7.3.12":
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
@@ -838,7 +830,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.5.3, @types/ws@npm:^8.5.4":
+"@types/ws@npm:^8.5.10":
+  version: 8.5.12
+  resolution: "@types/ws@npm:8.5.12"
+  dependencies:
+    "@types/node": "*"
+  checksum: ddefb6ad1671f70ce73b38a5f47f471d4d493864fca7c51f002a86e5993d031294201c5dced6d5018fb8905ad46888d65c7f20dd54fc165910b69f42fba9a6d0
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.5.3":
   version: 8.5.4
   resolution: "@types/ws@npm:8.5.4"
   dependencies:
@@ -3832,7 +3833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"psl@npm:^1.1.33, psl@npm:^1.9.0":
+"psl@npm:^1.1.33":
   version: 1.9.0
   resolution: "psl@npm:1.9.0"
   checksum: 20c4277f640c93d393130673f392618e9a8044c6c7bf61c53917a0fddb4952790f5f362c6c730a9c32b124813e173733f9895add8d26f566ed0ea0654b2e711d
@@ -4574,6 +4575,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tldts-core@npm:^6.1.38":
+  version: 6.1.38
+  resolution: "tldts-core@npm:6.1.38"
+  checksum: 828abb5f0199921e3d00a67d92857f38aa095b0ef3887d107e55c4dc7624a36d9f21839f164adea25af0b88c68773fce8199b8e3876521135263b62d97cb0a17
+  languageName: node
+  linkType: hard
+
+"tldts@npm:^6.1.2":
+  version: 6.1.38
+  resolution: "tldts@npm:6.1.38"
+  dependencies:
+    tldts-core: ^6.1.38
+  bin:
+    tldts: bin/cli.js
+  checksum: 7f9bb136488338790e6c21cddd67ce775090a319775eddc94ecf0b4eb5aeba6ed03c9000dec3252acc100d73c0ece41b3c00309290ee796c2a44c112e9d64326
+  languageName: node
+  linkType: hard
+
 "to-data-view@npm:^1.1.0":
   version: 1.1.0
   resolution: "to-data-view@npm:1.1.0"
@@ -4685,6 +4704,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.6.2":
+  version: 2.6.3
+  resolution: "tslib@npm:2.6.3"
+  checksum: 74fce0e100f1ebd95b8995fbbd0e6c91bdd8f4c35c00d4da62e285a3363aaa534de40a80db30ecfd388ed7c313c42d930ee0eaf108e8114214b180eec3dbe6f5
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -4760,12 +4786,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1, undici@npm:^5.20.0":
+"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1":
   version: 5.20.0
   resolution: "undici@npm:5.20.0"
   dependencies:
     busboy: ^1.6.0
   checksum: 25412a785b2bd0b12f0bb0ec47ef00aa7a611ca0e570cb7af97cffe6a42e0d78e4b15190363a43771e9002defc3c6647c1b2d52201b3f64e2196819db4d150d3
+  languageName: node
+  linkType: hard
+
+"undici@npm:^6.4.0":
+  version: 6.19.5
+  resolution: "undici@npm:6.19.5"
+  checksum: 4ca8d8811fe2d8f905bd20eaf9dbf141f51cb6de3d8a4ef7e606b637cbd05f316edcb01d7d5a860a719ef97034f3ad96943a6c6a4cbcc797c89565091e3ba1d2
   languageName: node
   linkType: hard
 
@@ -4889,7 +4922,7 @@ __metadata:
     "@sapphire/duration": ^1.0.0
     "@sapphire/framework": 4.0.1
     "@sapphire/pieces": ^3.6.0
-    "@sapphire/plugin-api": ^5.0.0
+    "@sapphire/plugin-api": ^6.1.1
     "@sapphire/plugin-i18next": ^5.0.0
     "@sapphire/plugin-scheduled-tasks": ^6.0.0
     "@sapphire/shapeshift": ^3.8.1
