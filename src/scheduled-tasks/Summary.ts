@@ -36,10 +36,10 @@ export class UserTask extends ScheduledTask {
 		const defaultUsername = this.container.client.user?.username ?? ''
 
 		for ( const api of wikis ) {
-			const summary = await this.getSummary( api, from, to )
-			if ( !summary ) continue
-
 			try {
+				const summary = await this.getSummary( api, from, to )
+				if ( !summary ) continue
+
 				const configs = await this.container.prisma.configuration.findMany( {
 					include: { profiles: true },
 					where: { wiki: api }
