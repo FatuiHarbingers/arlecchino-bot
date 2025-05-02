@@ -531,7 +531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quority/fandom@npm:^4.0.8":
+"@quority/fandom@npm:^4.0.9":
   version: 4.0.9
   resolution: "@quority/fandom@npm:4.0.9"
   dependencies:
@@ -4883,7 +4883,7 @@ __metadata:
     "@prisma/client": 4.10.1
     "@quority/activity": ^1.1.1
     "@quority/core": ^4.0.3
-    "@quority/fandom": ^4.0.8
+    "@quority/fandom": ^4.0.9
     "@sapphire/decorators": ^6.0.0
     "@sapphire/discord-utilities": ^3.0.0
     "@sapphire/duration": ^1.0.0
