@@ -30,7 +30,7 @@
     "@sapphire/shapeshift": "^3.8.1",
     "@sapphire/utilities": "^3.11.0",
     "bullmq": "^3.6.4",
-    "colorette": "^2.0.19",
+    "colorette": "^2.0.20",
     "discord-api-types": "^0.37.31",
     "discord.js": "^14.7.1",
     "ico-to-png": "^0.2.1",
