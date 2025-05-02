@@ -1258,19 +1258,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bullmq@npm:^3.6.4":
-  version: 3.10.0
-  resolution: "bullmq@npm:3.10.0"
+"bullmq@npm:^3.16.2":
+  version: 3.16.2
+  resolution: "bullmq@npm:3.16.2"
   dependencies:
     cron-parser: ^4.6.0
     glob: ^8.0.3
-    ioredis: ^5.3.0
+    ioredis: ^5.3.2
     lodash: ^4.17.21
     msgpackr: ^1.6.2
     semver: ^7.3.7
     tslib: ^2.0.0
     uuid: ^9.0.0
-  checksum: efa652831374ea5be31d7de04cb4aa31e0ec249433bef8502c1ae4b52a81aeef5566c069fcea00e3cfe133afa618392347f216b6a9c7d4122a48600978b0ddbf
+  checksum: bfa6652d024702bfc03f061c99a13a9850946225419798d5bb63c731db0b7bc6611ebfeb41580df28967c75f1e32358ba005138f3c85ae6fed7fbfb58b727883
   languageName: node
   linkType: hard
 
@@ -2617,6 +2617,23 @@ __metadata:
     redis-parser: ^3.0.0
     standard-as-callback: ^2.1.0
   checksum: 6c98cb8f8772ad4bb2b6b7a0a224e4a63f4759f9a28e84205f18788552f08221d51f391c10892dca01a1b10b2804d0a7e6082b0b7decd65538a5fb6b0f4f1f82
+  languageName: node
+  linkType: hard
+
+"ioredis@npm:^5.3.2":
+  version: 5.6.1
+  resolution: "ioredis@npm:5.6.1"
+  dependencies:
+    "@ioredis/commands": ^1.1.1
+    cluster-key-slot: ^1.1.0
+    debug: ^4.3.4
+    denque: ^2.1.0
+    lodash.defaults: ^4.2.0
+    lodash.isarguments: ^3.1.0
+    redis-errors: ^1.2.0
+    redis-parser: ^3.0.0
+    standard-as-callback: ^2.1.0
+  checksum: 89100a97b2210fed2aca45daf902adee8aa2294e56f817742651c86234a3efa56f82aa5aa762a94f5fbf806942f259ef5e628f626d1841d20d5cbb163fc8bd3f
   languageName: node
   linkType: hard
 
@@ -4897,7 +4914,7 @@ __metadata:
     "@types/node": ^18.11.18
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
-    bullmq: ^3.6.4
+    bullmq: ^3.16.2
     colorette: ^2.0.19
     discord-api-types: ^0.37.31
     discord.js: ^14.7.1
