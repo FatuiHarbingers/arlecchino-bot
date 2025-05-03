@@ -32,7 +32,7 @@
     "bullmq": "^3.6.4",
     "colorette": "^2.0.19",
     "discord-api-types": "^0.37.31",
-    "discord.js": "^14.7.1",
+    "discord.js": "^14.19.3",
     "ico-to-png": "^0.2.1",
     "ioredis": "^5.3.0",
     "mysql2": "^2.3.3",
