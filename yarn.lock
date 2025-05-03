@@ -261,6 +261,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/builders@npm:^1.11.2":
+  version: 1.11.2
+  resolution: "@discordjs/builders@npm:1.11.2"
+  dependencies:
+    "@discordjs/formatters": ^0.6.1
+    "@discordjs/util": ^1.1.1
+    "@sapphire/shapeshift": ^4.0.0
+    discord-api-types: ^0.38.1
+    fast-deep-equal: ^3.1.3
+    ts-mixer: ^6.0.4
+    tslib: ^2.6.3
+  checksum: 4ab48fee3144dc0d559a0c9cd6337502d84c3bbdf081d7a89fccba7dc089c9197d0d0fa972925c688dbf97b297a1e42fc19402979a7c1513a96a3beb5040c79c
+  languageName: node
+  linkType: hard
+
 "@discordjs/builders@npm:^1.4.0":
   version: 1.4.0
   resolution: "@discordjs/builders@npm:1.4.0"
@@ -275,10 +290,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/collection@npm:1.5.3":
+  version: 1.5.3
+  resolution: "@discordjs/collection@npm:1.5.3"
+  checksum: fefed19bea0f69053d195f9d9dc8af07ca5d8c9b1064581e0aa14bda2b70e632b93c164d5ef3e4910f5442369612ff4eec8d52a700aec562510c19b223f67023
+  languageName: node
+  linkType: hard
+
 "@discordjs/collection@npm:^1.2.0, @discordjs/collection@npm:^1.3.0":
   version: 1.3.0
   resolution: "@discordjs/collection@npm:1.3.0"
   checksum: 5ca6e9757f4c1e19564a0ac96ebfcabd1a83bf3ac0270034a0ea887f418f196caea4b54ebac5aaf0fc28d98f58f12794a6242d07acf08c946f23aa2e0047e87d
+  languageName: node
+  linkType: hard
+
+"@discordjs/collection@npm:^2.1.0, @discordjs/collection@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@discordjs/collection@npm:2.1.1"
+  checksum: 8c4cd75061b378a35dfa50c4403828b8e6d5d32934047d1d26e5a4fcc2c1b8135ebf74a6dd9ec61afcb4ec030d596b85da5463dc28cad084635cd184eb69c453
+  languageName: node
+  linkType: hard
+
+"@discordjs/formatters@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@discordjs/formatters@npm:0.6.1"
+  dependencies:
+    discord-api-types: ^0.38.1
+  checksum: 556b53898f8c6ab8940970e1e2202d25b653649190567cdca14b99cb48f757afa8e0a7022c0f67619f3dc3bc969905cdd6411a7d572ecb005ca9a2d09aac7c62
   languageName: node
   linkType: hard
 
@@ -298,10 +336,51 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/rest@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@discordjs/rest@npm:2.5.0"
+  dependencies:
+    "@discordjs/collection": ^2.1.1
+    "@discordjs/util": ^1.1.1
+    "@sapphire/async-queue": ^1.5.3
+    "@sapphire/snowflake": ^3.5.3
+    "@vladfrangu/async_event_emitter": ^2.4.6
+    discord-api-types: ^0.38.1
+    magic-bytes.js: ^1.10.0
+    tslib: ^2.6.3
+    undici: 6.21.1
+  checksum: 06572d69bb41e446ff1aae217682d1cd15c935cb3719e69ca5371922372a5c7768e62e19bb989bc416b906f8dfc12bdf4b43a900de607b91f48e0cd9e01254da
+  languageName: node
+  linkType: hard
+
 "@discordjs/util@npm:^0.1.0":
   version: 0.1.0
   resolution: "@discordjs/util@npm:0.1.0"
   checksum: 880e15cd761437a21cf17b8a9dab50e7e5418fcc77dc34037c31a52b871fab1b958218ab6218aafd20af8b7a4e658a705d3f257268324773a285d9a06368c1b9
+  languageName: node
+  linkType: hard
+
+"@discordjs/util@npm:^1.1.0, @discordjs/util@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@discordjs/util@npm:1.1.1"
+  checksum: 13f25aa2917de732bdd90e9cee9322b69c8c0a173206e2ce308f1bb177d4ce20a138efdb5b0ec5029a10ebbbde71d4c12ba51354b09db4b488e8de429c393fd4
+  languageName: node
+  linkType: hard
+
+"@discordjs/ws@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@discordjs/ws@npm:1.2.2"
+  dependencies:
+    "@discordjs/collection": ^2.1.0
+    "@discordjs/rest": ^2.5.0
+    "@discordjs/util": ^1.1.0
+    "@sapphire/async-queue": ^1.5.2
+    "@types/ws": ^8.5.10
+    "@vladfrangu/async_event_emitter": ^2.2.4
+    discord-api-types: ^0.38.1
+    tslib: ^2.6.2
+    ws: ^8.17.0
+  checksum: 6acc5780121590facf3085546a8f36eb8eaccc6c746a18a1dfd5b3679cb449a5e96be16e95fb06b58cb4cae0f608c521015a2b5716af582831b87721f05475af
   languageName: node
   linkType: hard
 
@@ -549,6 +628,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/async-queue@npm:^1.5.2, @sapphire/async-queue@npm:^1.5.3":
+  version: 1.5.5
+  resolution: "@sapphire/async-queue@npm:1.5.5"
+  checksum: 87218b46599728ce83f3829d246f939e6f5857aa002b55ac9c416864b9af16d242e09d069eaf96547596c5e7b042705038cbc9c5eebb07d490ba17271a688e67
+  languageName: node
+  linkType: hard
+
 "@sapphire/decorators@npm:^6.0.0":
   version: 6.0.0
   resolution: "@sapphire/decorators@npm:6.0.0"
@@ -715,10 +801,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/shapeshift@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@sapphire/shapeshift@npm:4.0.0"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    lodash: ^4.17.21
+  checksum: d312dd529c3b3d221a8fcd58428d03de2a744a1568ad810f9f75e1f4d5a0387952285b436b37f29141a810f6bbbe310ed3c31882c57d260a744f39beb35649f0
+  languageName: node
+  linkType: hard
+
+"@sapphire/snowflake@npm:3.5.3":
+  version: 3.5.3
+  resolution: "@sapphire/snowflake@npm:3.5.3"
+  checksum: 821add76877e2786ddb1b5cd3ee5de130610b82014972d91a99b4b7ce5475839b9a26f94de322f48a66f9ba2e2c578ffe46a60d06cbb9a36fd8fb96ef78be248
+  languageName: node
+  linkType: hard
+
 "@sapphire/snowflake@npm:^3.2.2":
   version: 3.4.0
   resolution: "@sapphire/snowflake@npm:3.4.0"
   checksum: 556b7001f33d6edbbbcbca46f6abfa56c732a29e78b693161e358688e688edcb012d2c1bc944e7ffb41bd6c9950d261bc73f95656dc01643361a218b4f5ab985
+  languageName: node
+  linkType: hard
+
+"@sapphire/snowflake@npm:^3.5.3":
+  version: 3.5.5
+  resolution: "@sapphire/snowflake@npm:3.5.5"
+  checksum: 8f18a99fa2a9bcd7369851dd12abb337e4beaadeb294de50d638466690fe8d037a6e82628021ad5a971c75b6543501b20c72a859f9686ccabd0fd229fe45daed
   languageName: node
   linkType: hard
 
@@ -835,6 +945,15 @@ __metadata:
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
   checksum: 00c0724d54757c2f4bc60b5032fe91cda6410e48689633d5f35ece8a0a66445e3e57fa1d6e07eb780f792e82ac542948ec4d0b76eb3484297b79bd18b8cf1cb0
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.5.10":
+  version: 8.18.1
+  resolution: "@types/ws@npm:8.18.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0331b14cde388e2805af66cad3e3f51857db8e68ed91e5b99750915e96fe7572e58296dc99999331bbcf08f0ff00a227a0bb214e991f53c2a5aca7b0e71173fa
   languageName: node
   linkType: hard
 
@@ -965,6 +1084,13 @@ __metadata:
     "@typescript-eslint/types": 5.54.0
     eslint-visitor-keys: ^3.3.0
   checksum: 17fc323c09e6272b603cdaec30a99916600fbbb737e1fbc8c1727a487753b4363cea112277fa43e0562bff34bdd1de9ad73ff9433118b1fd469b112fad0313ca
+  languageName: node
+  linkType: hard
+
+"@vladfrangu/async_event_emitter@npm:^2.2.4, @vladfrangu/async_event_emitter@npm:^2.4.6":
+  version: 2.4.6
+  resolution: "@vladfrangu/async_event_emitter@npm:2.4.6"
+  checksum: 924e35d9adf8a045c9846c0c96618aa61c40c776b52b8d6ee510781367004ec5fda8949bf5f0d54d1896b041fccc0e5a71844c379c87b955b6412f5f18615cd9
   languageName: node
   linkType: hard
 
@@ -1717,6 +1843,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"discord-api-types@npm:^0.38.1":
+  version: 0.38.2
+  resolution: "discord-api-types@npm:0.38.2"
+  checksum: 76499e907fb4dc6178abe3cdf86852d5076e5e9de0dddcbfb06be542d7c871d4afddbc634a5fe1b1bea021f23fd6bf83923d2dc8990970ef495e4f770798a752
+  languageName: node
+  linkType: hard
+
+"discord.js@npm:^14.19.3":
+  version: 14.19.3
+  resolution: "discord.js@npm:14.19.3"
+  dependencies:
+    "@discordjs/builders": ^1.11.2
+    "@discordjs/collection": 1.5.3
+    "@discordjs/formatters": ^0.6.1
+    "@discordjs/rest": ^2.5.0
+    "@discordjs/util": ^1.1.1
+    "@discordjs/ws": ^1.2.2
+    "@sapphire/snowflake": 3.5.3
+    discord-api-types: ^0.38.1
+    fast-deep-equal: 3.1.3
+    lodash.snakecase: 4.1.1
+    magic-bytes.js: ^1.10.0
+    tslib: ^2.6.3
+    undici: 6.21.1
+  checksum: b28fa8fc3cb169cca6656c1fa3a5ab5a8e578d9f7e71e3bef27c0e773fca2dffb00e4171c509a3b6bde4980bff60b29c871abc34e5298677aa2168e330d6ddd0
+  languageName: node
+  linkType: hard
+
 "discord.js@npm:^14.7.1":
   version: 14.7.1
   resolution: "discord.js@npm:14.7.1"
@@ -2038,7 +2192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
+"fast-deep-equal@npm:3.1.3, fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
   checksum: e21a9d8d84f53493b6aa15efc9cfd53dd5b714a1f23f67fb5dc8f574af80df889b3bce25dc081887c6d25457cce704e636395333abad896ccdec03abaf1f3f9d
@@ -2984,7 +3138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.snakecase@npm:^4.1.1":
+"lodash.snakecase@npm:4.1.1, lodash.snakecase@npm:^4.1.1":
   version: 4.1.1
   resolution: "lodash.snakecase@npm:4.1.1"
   checksum: 1685ed3e83dda6eae5a4dcaee161a51cd210aabb3e1c09c57150e7dd8feda19e4ca0d27d0631eabe8d0f4eaa51e376da64e8c018ae5415417c5890d42feb72a8
@@ -3068,6 +3222,13 @@ __metadata:
   version: 3.3.0
   resolution: "luxon@npm:3.3.0"
   checksum: 50cf17a0dc155c3dcacbeae8c0b7e80db425e0ba97b9cbdf12a7fc142d841ff1ab1560919f033af46240ed44e2f70c49f76e3422524c7fc8bb8d81ca47c66187
+  languageName: node
+  linkType: hard
+
+"magic-bytes.js@npm:^1.10.0":
+  version: 1.12.1
+  resolution: "magic-bytes.js@npm:1.12.1"
+  checksum: 4e59d8572e6affcd9d4f90df609fed16782a775852378f9017e13ec25fc476c16049d1a90bb978bfef5bb083d4c7db268ccbfd5fc9ddeecafac81231c9c0285a
   languageName: node
   linkType: hard
 
@@ -4633,6 +4794,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-mixer@npm:^6.0.4":
+  version: 6.0.4
+  resolution: "ts-mixer@npm:6.0.4"
+  checksum: 36b1af526befd74345e736e9aa16f5c28876ebcea07784da14d929149fd7e6028cfd2fe9304c8efe8cb91b588443a9cc9e991df58e4c6e602326edbaae2af3ab
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^10.8.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
@@ -4682,6 +4850,13 @@ __metadata:
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.6.2, tslib@npm:^2.6.3":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: e4aba30e632b8c8902b47587fd13345e2827fa639e7c3121074d5ee0880723282411a8838f830b55100cbe4517672f84a2472667d355b81e8af165a55dc6203a
   languageName: node
   linkType: hard
 
@@ -4757,6 +4932,13 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 8f6260acc86b56bfdda6004bc53f32ea548f543e8baef7071c8e34d29d292f3e375c8416556c8de10b24deef6933cd1c16a8233dc84a3dd43a13a13265d0faab
+  languageName: node
+  linkType: hard
+
+"undici@npm:6.21.1":
+  version: 6.21.1
+  resolution: "undici@npm:6.21.1"
+  checksum: 2efc52f77224754a2efa7cb6459829f3c93c8321d17e76f574a904b353783d95073b6116f5b15637c4845d98c9dc5a019b809cb9d63b3529267e7727c49f6996
   languageName: node
   linkType: hard
 
@@ -4900,7 +5082,7 @@ __metadata:
     bullmq: ^3.6.4
     colorette: ^2.0.19
     discord-api-types: ^0.37.31
-    discord.js: ^14.7.1
+    discord.js: ^14.19.3
     eslint: ^8.33.0
     husky: ^8.0.3
     ico-to-png: ^0.2.1
@@ -4965,6 +5147,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 97301c1c4d838fc81bd413f370f75c12aabe44527b31323b761eab3043a9ecb7e32ffd668548382c9a6a5ad3a1c3a9249608e8338e6b939f2f9540f1e21970b5
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.17.0":
+  version: 8.18.2
+  resolution: "ws@npm:8.18.2"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: e38beae19ba4d68577ec24eb34fbfab376333fedd10f99b07511a8e842e22dbc102de39adac333a18e4c58868d0703cd5f239b04b345e22402d0ed8c34ea0aa0
   languageName: node
   linkType: hard
 
