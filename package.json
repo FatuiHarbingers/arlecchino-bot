@@ -24,7 +24,7 @@
     "@sapphire/duration": "^1.0.0",
     "@sapphire/framework": "4.0.1",
     "@sapphire/pieces": "^3.6.0",
-    "@sapphire/plugin-api": "^5.0.0",
+    "@sapphire/plugin-api": "^8.2.1",
     "@sapphire/plugin-i18next": "^5.0.0",
     "@sapphire/plugin-scheduled-tasks": "^6.0.0",
     "@sapphire/shapeshift": "^3.8.1",

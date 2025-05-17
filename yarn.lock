@@ -652,16 +652,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-api@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@sapphire/plugin-api@npm:5.0.1"
+"@sapphire/plugin-api@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "@sapphire/plugin-api@npm:8.2.1"
   dependencies:
-    "@types/psl": ^1.1.0
-    "@types/ws": ^8.5.4
-    psl: ^1.9.0
-    tslib: ^2.5.0
-    undici: ^5.20.0
-  checksum: 82c6fd9d48f07c7912e47992c5d46cf1b461fc1ac4348f6c5a3d08395274a74619c769fe5c244fbdb36d7def4a03bca71f9c066bd83d54d55e202bf11e5991a7
+    "@types/ws": ^8.18.1
+    "@vladfrangu/async_event_emitter": 2.4.6
+    cookie-es: ^1.2.2
+    tldts: ^7.0.7
+    undici: ^7.9.0
+  checksum: e064a1d436851faae5ed5d03f76228383ce30099b1369bf76a03a831f19da655f3da552589f4c52b253650223e4a39a79563e8a9a69ed5d262181c5349999878
   languageName: node
   linkType: hard
 
@@ -824,13 +824,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/psl@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@types/psl@npm:1.1.0"
-  checksum: 648a4a40827fb101a05616b9c448b04d40c467db9f09e08099274759fd5e032e7d276013296679765c7d7359f43f0479094c1d8b6a56a8f9445b84b5a9af1263
-  languageName: node
-  linkType: hard
-
 "@types/semver@npm:^7.3.12":
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
@@ -838,7 +831,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.5.3, @types/ws@npm:^8.5.4":
+"@types/ws@npm:^8.18.1":
+  version: 8.18.1
+  resolution: "@types/ws@npm:8.18.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0331b14cde388e2805af66cad3e3f51857db8e68ed91e5b99750915e96fe7572e58296dc99999331bbcf08f0ff00a227a0bb214e991f53c2a5aca7b0e71173fa
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.5.3":
   version: 8.5.4
   resolution: "@types/ws@npm:8.5.4"
   dependencies:
@@ -965,6 +967,13 @@ __metadata:
     "@typescript-eslint/types": 5.54.0
     eslint-visitor-keys: ^3.3.0
   checksum: 17fc323c09e6272b603cdaec30a99916600fbbb737e1fbc8c1727a487753b4363cea112277fa43e0562bff34bdd1de9ad73ff9433118b1fd469b112fad0313ca
+  languageName: node
+  linkType: hard
+
+"@vladfrangu/async_event_emitter@npm:2.4.6":
+  version: 2.4.6
+  resolution: "@vladfrangu/async_event_emitter@npm:2.4.6"
+  checksum: 924e35d9adf8a045c9846c0c96618aa61c40c776b52b8d6ee510781367004ec5fda8949bf5f0d54d1896b041fccc0e5a71844c379c87b955b6412f5f18615cd9
   languageName: node
   linkType: hard
 
@@ -1548,6 +1557,13 @@ __metadata:
   bin:
     conventional-commits-parser: cli.js
   checksum: 1627ff203bc9586d89e47a7fe63acecf339aba74903b9114e23d28094f79d4e2d6389bf146ae561461dcba8fc42e7bc228165d2b173f15756c43f1d32bc50bfd
+  languageName: node
+  linkType: hard
+
+"cookie-es@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "cookie-es@npm:1.2.2"
+  checksum: 099050c30c967c89aa72d1d7984e87b3395f3e709cf148d297f436828ebfcc39033f5374d2efdc46d9b5e3eee50b1d59635432c252e57329fea7f09afeb4d055
   languageName: node
   linkType: hard
 
@@ -3832,7 +3848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"psl@npm:^1.1.33, psl@npm:^1.9.0":
+"psl@npm:^1.1.33":
   version: 1.9.0
   resolution: "psl@npm:1.9.0"
   checksum: 20c4277f640c93d393130673f392618e9a8044c6c7bf61c53917a0fddb4952790f5f362c6c730a9c32b124813e173733f9895add8d26f566ed0ea0654b2e711d
@@ -4574,6 +4590,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tldts-core@npm:^7.0.7":
+  version: 7.0.7
+  resolution: "tldts-core@npm:7.0.7"
+  checksum: 3db58b404d1868214b40ad7697a303fc5dcbe62cb58929d9874da5f00abf8f8a4cf6eedee674938dfa9cee362fd102257a057704a313643dad5387cdc4416359
+  languageName: node
+  linkType: hard
+
+"tldts@npm:^7.0.7":
+  version: 7.0.7
+  resolution: "tldts@npm:7.0.7"
+  dependencies:
+    tldts-core: ^7.0.7
+  bin:
+    tldts: bin/cli.js
+  checksum: 713c2ed631364bc359d6afbb17e32726e8f187a402872c169ad78e67fb727d838ef2dccff46199efd5b67a982e769f7898bc69aed37852cfe48337a5bfce5894
+  languageName: node
+  linkType: hard
+
 "to-data-view@npm:^1.1.0":
   version: 1.1.0
   resolution: "to-data-view@npm:1.1.0"
@@ -4760,12 +4794,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1, undici@npm:^5.20.0":
+"undici@npm:^5.12.0, undici@npm:^5.13.0, undici@npm:^5.19.1":
   version: 5.20.0
   resolution: "undici@npm:5.20.0"
   dependencies:
     busboy: ^1.6.0
   checksum: 25412a785b2bd0b12f0bb0ec47ef00aa7a611ca0e570cb7af97cffe6a42e0d78e4b15190363a43771e9002defc3c6647c1b2d52201b3f64e2196819db4d150d3
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.9.0":
+  version: 7.9.0
+  resolution: "undici@npm:7.9.0"
+  checksum: 78f534d623592438a4484069781ab76f96755e5aee8c0e6d73aa55b6b4f048839b60134bc6d210b7ad5355edf322326df0a8b13a3061bd65b0b3c250d5017569
   languageName: node
   linkType: hard
 
@@ -4889,7 +4930,7 @@ __metadata:
     "@sapphire/duration": ^1.0.0
     "@sapphire/framework": 4.0.1
     "@sapphire/pieces": ^3.6.0
-    "@sapphire/plugin-api": ^5.0.0
+    "@sapphire/plugin-api": ^8.2.1
     "@sapphire/plugin-i18next": ^5.0.0
     "@sapphire/plugin-scheduled-tasks": ^6.0.0
     "@sapphire/shapeshift": ^3.8.1
