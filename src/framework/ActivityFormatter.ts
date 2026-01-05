@@ -8,6 +8,7 @@ import { DiscussionsStrategy, LogEventsStrategy, RecentChangesStrategy } from '.
 import { ProfileType } from '@prisma/client'
 import { Wiki } from '@quority/core'
 import { Fandom } from '@quority/fandom'
+import { env } from '../lib'
 
 interface EmbedWrapper {
 	embed: EmbedBuilder
@@ -27,11 +28,16 @@ export class ActivityFormatter {
 	} | null = null
 
 	public constructor( api: string, from: Date, to: Date ) {
-		if ( api.includes( 'fandom' ) ) {
-			this.wiki = new Wiki( { api, platform: Fandom } )
-		} else {
-			this.wiki = new Wiki( { api } )
+		const options: ConstructorParameters<typeof Wiki>[0] = {
+			api,
+			requestOptions: {
+				headers: {
+					'user-agent': `WikiActivity/Discord (Discord Snowflake ${ env.DISCORD_OWNER })`
+				}
+			}
 		}
+		if ( api.includes( 'fandom' ) ) options.platform = Fandom
+		this.wiki = new Wiki( options )
 		this.from = from
 		this.to = to
 	}

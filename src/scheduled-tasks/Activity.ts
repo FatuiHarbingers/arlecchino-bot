@@ -1,4 +1,4 @@
-import { AttachmentBuilder, ChannelType, type Webhook } from 'discord.js'
+import { AttachmentBuilder, ChannelType, type Webhook, type WebhookCreateMessageOptions } from 'discord.js'
 import { sleep } from '@quority/core'
 import { ScheduledTask, type ScheduledTaskOptions } from '@sapphire/plugin-scheduled-tasks'
 import { ApplyOptions  } from '@sapphire/decorators'
@@ -80,12 +80,15 @@ export class UserTask extends ScheduledTask {
 								text: `${ await formatter.getSitename() }${ embed.data.footer?.text ?? '' }`
 							} )
 
-							await webhook.send( {
+							const payload: WebhookCreateMessageOptions = {
 								avatarURL: profile?.avatar ?? defaultAvatar ?? '',
 								embeds: [ embed ],
 								files: attachment,
 								username: profile?.name ?? this.container.client.user?.username ?? 'Wiki Activity'
-							} )
+							}
+							if ( config.thread ) payload.threadId = config.thread
+
+							await webhook.send( payload )
 							await sleep( 1000 )
 						}
 					}

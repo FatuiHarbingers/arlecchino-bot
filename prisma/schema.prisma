@@ -30,6 +30,7 @@ model Configuration {
   channel        String    @db.VarChar(255)
   guild          String    @db.VarChar(255)
   profiles       Profile[]
+  thread         String?   @db.VarChar(255)
   wiki           String    @db.VarChar(255)
   Guild          Guild?    @relation(fields: [guildSnowflake], references: [snowflake])
   guildSnowflake String?   @db.VarChar(255)
