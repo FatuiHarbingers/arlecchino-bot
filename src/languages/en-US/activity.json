@@ -27,7 +27,7 @@
 	"log-upload-uploaded": "📷 **{{ author }}** uploaded {{ target }}.",
 	"post-left-reply": "💭 **{{ user }}** left [a reply]({{ replyUrl }}) to a post: {{ post }}.",
 	"post-created": "💭 **{{ user }}** created a new post in {{ category }}: [{{ title }}]({{ replyUrl }}).",
-	"rc-created": "☑ **{{ user }}** created **{{ page }}**. ({{ diff }})",
+	"rc-created": "✅ **{{ user }}** created **{{ page }}**. ({{ diff }})",
 	"rc-edited": "📝 **{{ user }}** edited **{{ page }}**. ({{ diff }})",
 	"rc-summary": "Summary",
 	"wall-left-reply": "✉️ **{{ user }}** left [a reply]({{ replyUrl }}) to a message in [{{ wallOwner }}'s message wall]({{ wallUrl }}).",
