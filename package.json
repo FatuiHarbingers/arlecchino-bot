@@ -42,7 +42,7 @@
     "undici": "^5.19.1"
   },
   "devDependencies": {
-    "@bitomic/eslint-config": "^1.0.0",
+    "@bitomic/eslint-config": "^1.3.0",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@types/node": "^18.11.18",
