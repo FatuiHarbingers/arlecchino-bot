@@ -38,7 +38,7 @@
     "mysql2": "^2.3.3",
     "pino": "^8.8.0",
     "pino-pretty": "^9.1.1",
-    "ts-dotenv": "^0.9.0",
+    "ts-dotenv": "^0.9.1",
     "undici": "^5.19.1"
   },
   "devDependencies": {
