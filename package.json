@@ -15,7 +15,7 @@
     "start": "yarn db:migrate && doppler run -- yarn node --enable-source-maps dist/main.js"
   },
   "dependencies": {
-    "@prisma/client": "4.10.1",
+    "@prisma/client": "7.10.0",
     "@quority/activity": "github:quority/activity",
     "@quority/core": "^4.0.3",
     "@quority/fandom": "^4.0.8",
