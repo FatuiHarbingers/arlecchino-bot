@@ -20,7 +20,7 @@
     "@quority/core": "^4.0.3",
     "@quority/fandom": "^4.0.8",
     "@sapphire/decorators": "^6.0.0",
-    "@sapphire/discord-utilities": "^3.0.0",
+    "@sapphire/discord-utilities": "^4.0.0",
     "@sapphire/duration": "^1.0.0",
     "@sapphire/framework": "4.0.1",
     "@sapphire/pieces": "^3.6.0",
