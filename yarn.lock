@@ -567,6 +567,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/discord-utilities@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@sapphire/discord-utilities@npm:4.0.0"
+  dependencies:
+    discord-api-types: ^0.38.30
+  checksum: 7cd49709d07571d65997f91f18b2e80f192b64a3f370c23bcf483be73cf22939f9f5e0878c4914a382eef6d28b5373eacf3e155bcee3945c7205f59874a4313f
+  languageName: node
+  linkType: hard
+
 "@sapphire/discord.js-utilities@npm:6.0.0":
   version: 6.0.0
   resolution: "@sapphire/discord.js-utilities@npm:6.0.0"
@@ -1714,6 +1723,13 @@ __metadata:
   version: 0.37.35
   resolution: "discord-api-types@npm:0.37.35"
   checksum: 0a65234eefb9675c6faf82f42be6b0a4ee75bf8b2c901eecefea6ca539cd4e2a501b7fc195415884912fdb5040c98727dbd0c5a1f6bc15951948be37d1be162b
+  languageName: node
+  linkType: hard
+
+"discord-api-types@npm:^0.38.30":
+  version: 0.38.55
+  resolution: "discord-api-types@npm:0.38.55"
+  checksum: 2b02b5d64fccd55968f6e14d7c452e875e0b3603310d57e75fa8eb5ea9bbbc4982b241177b9c1fa432d2e53f2ec35ba4e9cdf9094200ec7535292c8f3e3e863d
   languageName: node
   linkType: hard
 
@@ -4885,7 +4901,7 @@ __metadata:
     "@quority/core": ^4.0.3
     "@quority/fandom": ^4.0.8
     "@sapphire/decorators": ^6.0.0
-    "@sapphire/discord-utilities": ^3.0.0
+    "@sapphire/discord-utilities": ^4.0.0
     "@sapphire/duration": ^1.0.0
     "@sapphire/framework": 4.0.1
     "@sapphire/pieces": ^3.6.0
